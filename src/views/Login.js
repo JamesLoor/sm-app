@@ -7,6 +7,9 @@ import Box from '../components/Box'
 import Input from '../components/Input'
 import Button from '../components/Button'
 
+// Services
+import { loginService } from '../services/auth'
+
 const LoginStyled = styled.div`
   display: grid;
   grid-template-columns: minmax(auto, 400px);
@@ -25,11 +28,13 @@ const LoginStyled = styled.div`
 export default function Login() {
   const formik = useFormik({
     initialValues: {
-      username: '',
+      email: '',
       password: ''
     },
-    onSubmit: async (values) => {
-      console.log(values)
+    onSubmit: async (user) => {
+      console.log(user)
+      const result = await loginService(user)
+      console.log(result)
     }
   })
 
@@ -39,17 +44,17 @@ export default function Login() {
         <p className="loginTitle">Iniciar Sesión</p>
         <form onSubmit={formik.handleSubmit}>
           <Input
-            label="Usuario"
-            name="username"
+            label="Correo"
+            name="email"
             onChange={formik.handleChange}
-            value={formik.values.date}
+            value={formik.values.email}
           />
           <Input
             label="Contraseña"
             name="password"
             type="password"
             onChange={formik.handleChange}
-            value={formik.values.date}
+            value={formik.values.password}
           />
           <Button type="submit" backgroundColor="#093B32">Iniciar Sesión</Button>
         </form>
