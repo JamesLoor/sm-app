@@ -47,7 +47,7 @@ export default function Login() {
           <Input
             label="Contraseña"
             name="password"
-            isPassword={true}
+            type="password"
             onChange={formik.handleChange}
             value={formik.values.date}
           />

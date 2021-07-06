@@ -17,13 +17,13 @@ const InputStyled = styled.div`
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
   }
 `
-export default function Input({ label, name, value, isPassword, onChange}) {
+export default function Input({ label, name, value, type, onChange}) {
   return (
     <InputStyled>
       <p className="label">{label}</p>
       <input
         className="inputContainer"
-        type={isPassword ? "password" : ""}
+        type={type ? type : ""}
         name={name}
         onChange={onChange}
         value={value}
