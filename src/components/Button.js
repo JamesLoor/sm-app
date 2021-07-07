@@ -10,6 +10,9 @@ const ButtonStyled = styled.button`
   padding: 7.5px 20px;
   text-align: center;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 export default function Button({ children, backgroundColor, width, type}) {
   return (

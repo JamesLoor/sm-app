@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useFormik } from 'formik'
+import { useHistory } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
 
 // Components
 import Box from '../components/Box'
 import Input from '../components/Input'
 import Button from '../components/Button'
 
-// Services
-import { loginService } from '../services/auth'
+// Redux
+import { loginUser } from '../redux/userDucks'
 
 const LoginStyled = styled.div`
   display: grid;
@@ -24,19 +26,29 @@ const LoginStyled = styled.div`
     font-size: 24px;
     font-weight: 700;
   }
+  /* Component LOADER */
+  
 `
 export default function Login() {
+
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const isLogged = useSelector(store => store.user.isLogged) || localStorage.getItem('token')
+  const isLoading = useSelector(store => store.user.isLoading)
+
   const formik = useFormik({
     initialValues: {
       email: '',
       password: ''
     },
     onSubmit: async (user) => {
-      console.log(user)
-      const result = await loginService(user)
-      console.log(result)
+      dispatch(loginUser(user))
     }
   })
+
+  useEffect(() => {
+    if(isLogged) history.push('/')
+  }, [isLogged, history])
 
   return (
     <LoginStyled>
@@ -56,7 +68,9 @@ export default function Login() {
             onChange={formik.handleChange}
             value={formik.values.password}
           />
-          <Button type="submit" backgroundColor="#093B32">Iniciar Sesión</Button>
+          <Button type="submit" backgroundColor="#093B32">
+            {isLoading ? "Cargando..." : "Iniciar Sesión"}
+          </Button>
         </form>
       </Box>
     </LoginStyled>
