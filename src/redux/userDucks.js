@@ -5,6 +5,7 @@ import { loginService } from "../services/auth"
 const initialState = {
   isLogged: false,
   isLoading: false,
+  userToken: null,
 }
 
 const LOGIN_SUCCES = 'LOGIN_SUCCES'
@@ -42,7 +43,6 @@ export const loginUser = (userCredentials) => async (dispatch) => {
       type: LOGIN_SUCCES,
       payload: userToken
     })
-    localStorage.setItem('Token', userToken)
   } catch (error) {
     dispatch({
       type: LOGIN_ERROR,
@@ -50,9 +50,8 @@ export const loginUser = (userCredentials) => async (dispatch) => {
   }
 }
 
-export const logoutUser = () => async (dispatch) => {
+export const logoutUser = () => (dispatch) => {
   dispatch({
     type: LOGOUT
   })
-  localStorage.removeItem('Token')
 }

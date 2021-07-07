@@ -1,14 +1,16 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import { useSelector } from 'react-redux'
 
-export const PrivateRoute = ({ children, ...rest }) => {
-  let auth = localStorage.getItem('Token');
+export const PrivateRoute = ({ component: Component, ...rest }) => {
+  let auth = useSelector(store => store.user.userToken)
   return (
-    <Route {...rest} render={({ location }) =>
+    <Route {...rest} render={(props) =>
         auth
-          ? children
-          : <Redirect to={{ pathname: "/login", state: { from: location } }}/>
+          ? <Component {...props} />
+          : <Redirect to={{ pathname: '/login', state: { from: props.location } }}/>
       }
     />
   )
 }
+

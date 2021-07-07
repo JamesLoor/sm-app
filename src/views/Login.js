@@ -31,7 +31,7 @@ export default function Login() {
 
   const dispatch = useDispatch()
   const history = useHistory()
-  const isLogged = useSelector(store => store.user.isLogged) || localStorage.getItem('Token')
+  const isLogged = useSelector(store => store.user.isLogged)
   const isLoading = useSelector(store => store.user.isLoading)
 
   const formik = useFormik({

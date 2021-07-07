@@ -8,7 +8,7 @@ import { PrivateRoute } from './components/PrivateRoute';
 // Views
 import Home from './views/Home'
 import Login from './views/Login'
-import NotFound404 from './views/NotFound404';
+// import NotFound404 from './views/NotFound404';
 
 // Redux
 import { Provider } from 'react-redux'
@@ -27,9 +27,8 @@ function App() {
           <Switch>
             <Route exact path="/login" component={Login}/>
             <Layout>
-              <PrivateRoute exact path="/" component={Home}/>
+              <PrivateRoute path="/" component={Home}/>
             </Layout>
-            <Route path="*" component={NotFound404}/>
           </Switch>
         </Router>
       </div>
