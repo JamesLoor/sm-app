@@ -4,16 +4,13 @@ import { loginService } from "../services/auth"
 
 const initialState = {
   isLogged: false,
-  isLoading: false
+  isLoading: false,
 }
 
 const LOGIN_SUCCES = 'LOGIN_SUCCES'
 const LOGIN_ERROR = 'LOGIN_ERROR'
 const LOGIN_LOADING = 'LOGIN_LOADING'
-
-// const LOGOUT_SUCCES = 'LOGOUT_SUCCES'
-// const LOGOUT_ERROR = 'LOGOUT_ERROR'
-// const LOGOUT_LOADING = 'LOGOUT_LOADING'
+const LOGOUT = 'LOGOUT'
 
 // Reducers
 
@@ -24,8 +21,9 @@ export default function userReducer(state = initialState, { type, payload }) {
     case LOGIN_ERROR:
       return {...initialState}
     case LOGIN_SUCCES:
-      return {...state, isLoading: false, isLogged: true, user: payload}
-
+      return {...state, isLoading: false, isLogged: true, userToken: payload}
+    case LOGOUT:
+      return {...initialState}
     default:
       return state
   }
@@ -44,7 +42,7 @@ export const loginUser = (userCredentials) => async (dispatch) => {
       type: LOGIN_SUCCES,
       payload: userToken
     })
-    localStorage.setItem('token', userToken)
+    localStorage.setItem('Token', userToken)
   } catch (error) {
     dispatch({
       type: LOGIN_ERROR,
@@ -52,7 +50,9 @@ export const loginUser = (userCredentials) => async (dispatch) => {
   }
 }
 
-
-
-
-
+export const logoutUser = () => async (dispatch) => {
+  dispatch({
+    type: LOGOUT
+  })
+  localStorage.removeItem('Token')
+}
