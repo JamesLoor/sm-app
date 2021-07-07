@@ -1,4 +1,4 @@
-import axios from 'axios'
+import { genService } from "../utils/genService"
 const { REACT_APP_API_URL } = process.env
 
 export class Patient {
@@ -17,51 +17,31 @@ export class Patient {
     if (page) {
       url += '/' + page
     }
-    if (headers) {
-      return axios.get(url, { headers })
-    } else {
-      return axios.get(url)
-    }
+    return genService(url, 'get', headers, undefined)
   }
 
   getPatient (id) {
     const { headers } = this
     const url = REACT_APP_API_URL + '/patient/' + id
-    if (headers) {
-      return axios.get(url, { headers })
-    } else {
-      return axios.get(url)
-    }
+    return genService(url, 'get', headers, undefined)
   }
 
   savePatient (patient) {
     const { headers } = this
     const url = REACT_APP_API_URL + '/patient'
-    if (headers) {
-      return axios.post(url, patient, { headers })
-    } else {
-      return axios.post(url, patient)
-    }
+    return genService(url, 'post', headers, patient)
   }
 
   updatePatient(id, patientUpdate) {
     const { headers } = this
     const url = REACT_APP_API_URL + '/patient/' + id
-    if (headers) {
-      return axios.put(url, patientUpdate, { headers })
-    } else {
-      return axios.put(url, patientUpdate)
-    }
+    return genService(url, 'put', headers, patientUpdate)
   }
 
   deletePatient(id) {
     const { headers } = this
     const url = REACT_APP_API_URL + '/patient/' + id
-    if (headers) {
-      return axios.delete(url, { headers })
-    } else {
-      return axios.delete(url)
-    }
+    return genService(url, 'delete', headers, undefined)
   }
 
 }

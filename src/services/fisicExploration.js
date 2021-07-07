@@ -1,4 +1,4 @@
-import axios from 'axios'
+import { genService } from "../utils/genService"
 const { REACT_APP_API_URL } = process.env
 
 export class FisicExploration {
@@ -14,50 +14,30 @@ export class FisicExploration {
   getFisicData (patientID) {
     const { headers } = this
     let url = REACT_APP_API_URL + `/document/fisic/${patientID}`
-    if (headers) {
-      return axios.get(url, { headers })
-    } else {
-      return axios.get(url)
-    }
+    return genService(url, 'get', headers, undefined)
   }
 
   getOneFisicData (patientID, fisicDataTitle) {
     const { headers } = this
     let url = REACT_APP_API_URL + `/document/fisic/${patientID}/${fisicDataTitle}`
-    if (headers) {
-      return axios.get(url, { info }, { headers })
-    } else {
-      return axios.get(url, { info })
-    }
+    return genService(url, 'get', headers, undefined)
   }
 
   saveFisicData (patientID, info) {
     const { headers } = this
     let url = REACT_APP_API_URL + `/document/fisic/${patientID}`
-    if (headers) {
-      return axios.post(url, { info }, { headers })
-    } else {
-      return axios.post(url, { info })
-    }
+    return genService(url, 'post', headers, info)
   }
 
   updateFisicData (patientID, fisicDataTitle, data) {
     const { headers } = this
     let url = REACT_APP_API_URL + `/document/fisic/${patientID}/${fisicDataTitle}`
-    if (headers) {
-      return axios.post(url, data, { headers })
-    } else {
-      return axios.post(url, data)
-    }
+    return genService(url, 'put', headers, data)
   }
 
   deleteFisicData (patientID, fisicDataTitle) {
     const { headers } = this
     let url = REACT_APP_API_URL + `/document/fisic/${patientID}/${fisicDataTitle}`
-    if (headers) {
-      return axios.delete(url, { headers })
-    } else {
-      return axios.delete(url)
-    }
+    return genService(url, 'delete', headers, undefined)
   }
 }
