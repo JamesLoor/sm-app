@@ -38,13 +38,14 @@ export const loginUser = (userCredentials) => async (dispatch) => {
     type: LOGIN_LOADING
   })
   try {
-    const user = await loginService(userCredentials)
+    const result = await loginService(userCredentials)
+    const userToken = result.data.message.token
     dispatch({
       type: LOGIN_SUCCES,
-      payload: user
+      payload: userToken
     })
+    localStorage.setItem('token', userToken)
   } catch (error) {
-    console.log(error)
     dispatch({
       type: LOGIN_ERROR,
     })

@@ -15,6 +15,7 @@ import generateStore from './redux/store'
 
 // Static
 import './App.css';
+import { PrivateRoute } from './components/PrivateRoute';
 
 function App() {
   const store = generateStore()
@@ -26,9 +27,9 @@ function App() {
           <Switch>
             <Route path="/login" component={Login}/>
             <Layout>
-              <Route path="/" component={Home}/>
+              <PrivateRoute exact path="/" component={Home}/>
             </Layout>
-            <Route path="*" component={NotFound404}/>
+            <Route exact path="*" component={NotFound404}/>
           </Switch>
         </Router>
       </div>

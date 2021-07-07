@@ -40,7 +40,7 @@ export default function Header() {
       <div className="wrapperHeader">
         <div className="containerHeader">
           <div className="logo">Sistema Médico</div>
-          <button onClick={handleButton}>Iniciar Sesion</button>
+          <button onClick={handleButton}>Perfil</button>
         </div>
       </div>
     </HeaderStyled>
