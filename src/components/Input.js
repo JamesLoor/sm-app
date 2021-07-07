@@ -16,13 +16,16 @@ const InputStyled = styled.div`
     padding: 7.5px 20px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
   }
+  .inputError {
+    border: 1px solid red
+  }
 `
-export default function Input({ label, name, value, type, onChange}) {
+export default function Input({ label, name, value, type, onChange, alert}) {
   return (
     <InputStyled>
       <p className="label">{label}</p>
       <input
-        className="inputContainer"
+        className={`inputContainer ${alert ? 'inputError' : null}`}
         type={type ? type : ""}
         name={name}
         onChange={onChange}
