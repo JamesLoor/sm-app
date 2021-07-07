@@ -5,11 +5,11 @@ export const genService = (url, type, headers, body) => {
     if (body) {
         return axios[type](url, body, { headers })
     } else {
-        return axios[type](url, body)
+        return axios[type](url, { headers })
     }
   } else {
     if (body) {
-        return axios[type](url, { headers })
+        return axios[type](url, body)
     } else {
         return axios[type](url)
     }
