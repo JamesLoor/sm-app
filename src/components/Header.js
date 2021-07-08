@@ -1,12 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useDispatch } from 'react-redux'
+
+// Redux
+import { logoutUser } from '../redux/userDucks'
 
 const HeaderStyled = styled.header`
   position: fixed;
   width: 100%;
   background-color: #ffffff;
   z-index: 1000;
-  padding: 15px 0;
+  padding: 14px 0;
   box-shadow: 0px 0px 7px #1111117a;
   .wrapperHeader {
     padding: 0px 20px;
@@ -29,10 +33,16 @@ const HeaderStyled = styled.header`
       font-size: 18px;
     }
   }
+  .logoutTesting {
+    cursor: pointer;
+  }
 `
 export default function Header() {
+
+  const dispatch = useDispatch()
+
   function handleButton(e) {
-    console.log('Hello')
+    dispatch(logoutUser())
   }
 
   return (
@@ -40,7 +50,7 @@ export default function Header() {
       <div className="wrapperHeader">
         <div className="containerHeader">
           <div className="logo">Sistema Médico</div>
-          <button onClick={handleButton}>Perfil</button>
+          <button className="logoutTesting" onClick={handleButton}>Cerrar Sesión</button>
         </div>
       </div>
     </HeaderStyled>

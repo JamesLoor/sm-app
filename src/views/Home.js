@@ -7,7 +7,7 @@ const HomeStyled = styled.div`
 export default function Home() {
   return (
     <HomeStyled>
-      <h1>Hello</h1>
+      <h1>Home</h1>
     </HomeStyled>
   )
 }

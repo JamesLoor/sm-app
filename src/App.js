@@ -3,11 +3,12 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // Components
 import Layout from './components/Layout'
+import { PrivateRoute } from './components/PrivateRoute';
 
 // Views
 import Home from './views/Home'
 import Login from './views/Login'
-import NotFound404 from './views/NotFound404';
+// import NotFound404 from './views/NotFound404';
 
 // Redux
 import { Provider } from 'react-redux'
@@ -15,7 +16,6 @@ import generateStore from './redux/store'
 
 // Static
 import './App.css';
-import { PrivateRoute } from './components/PrivateRoute';
 
 function App() {
   const store = generateStore()
@@ -25,11 +25,10 @@ function App() {
       <div className="App">
         <Router>
           <Switch>
-            <Route path="/login" component={Login}/>
+            <Route exact path="/login" component={Login}/>
             <Layout>
-              <PrivateRoute exact path="/" component={Home}/>
+              <PrivateRoute path="/" component={Home}/>
             </Layout>
-            <Route exact path="*" component={NotFound404}/>
           </Switch>
         </Router>
       </div>

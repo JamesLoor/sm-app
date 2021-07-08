@@ -26,14 +26,12 @@ const LoginStyled = styled.div`
     font-size: 24px;
     font-weight: 700;
   }
-  /* Component LOADER */
-  
 `
 export default function Login() {
 
   const dispatch = useDispatch()
   const history = useHistory()
-  const isLogged = useSelector(store => store.user.isLogged) || localStorage.getItem('token')
+  const isLogged = useSelector(store => store.user.isLogged)
   const isLoading = useSelector(store => store.user.isLoading)
 
   const formik = useFormik({
