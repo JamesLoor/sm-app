@@ -1,17 +1,10 @@
 import axios from 'axios'
 
-export const genService = (url, type, headers, body) => {
-  if (headers) {
-    if (body) {
-        return axios[type](url, body, { headers })
-    } else {
-        return axios[type](url, { headers })
-    }
+export const genService = (url, type, token, body) => {
+  const headers = { 'Authorization': 'Bearer ' + token }
+  if (body) {
+      return axios[type](url, body, { headers })
   } else {
-    if (body) {
-        return axios[type](url, body)
-    } else {
-        return axios[type](url)
-    }
+      return axios[type](url, { headers })
   }
 }

@@ -5,14 +5,9 @@ config()
 
 const { REACT_APP_API_URL } = process.env
 
-export const getName = () => {
-  const token = localStorage.getItem('token')
+export const getName = (token) => {
   const url = REACT_APP_API_URL + '/auth/me'
-  if (localStorage.getItem('token')) {
-    return genService(url, 'get', { 'Authorization': 'Bearer ' + token })
-  } else {
-    return genService(url, 'get', undefined)
-  }
+  return genService(url, 'get', token)
 }
 
 export const loginService = (user) => {
