@@ -3,15 +3,17 @@ import thunk from 'redux-thunk'
 import persistData from 'redux-localstorage'
 
 // Reducers
-import userReducer from './userDucks'
+import { userReducer, getNameReducer } from './userDucks'
 
 const rootReducer = combineReducers({
-  user: userReducer
+  user: userReducer,
+  name: getNameReducer
 })
 
 const composeEnhancers = compose(
   applyMiddleware(thunk),
-  persistData('user')
+  persistData('user'),
+  persistData("name")
 )
 
 export default function generateStore() {
