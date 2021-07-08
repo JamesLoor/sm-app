@@ -1,8 +1,19 @@
 import axios from 'axios'
+import { genService } from '../utils/genService'
 import { config } from 'dotenv'
 config()
 
 const { REACT_APP_API_URL } = process.env
+
+export const getName = () => {
+  const token = localStorage.getItem('token')
+  const url = REACT_APP_API_URL + '/auth/me'
+  if (localStorage.getItem('token')) {
+    return genService(url, 'get', { 'Authorization': 'Bearer ' + token })
+  } else {
+    return genService(url, 'get', undefined)
+  }
+}
 
 export const loginService = (user) => {
   const { email, password } = user

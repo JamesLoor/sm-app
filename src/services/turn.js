@@ -5,7 +5,7 @@ export class Turn {
   token
   headers
   constructor () {
-    this.token = localStorage.getItem('Token')
+    this.token = localStorage.getItem('token')
     if (this.token) {
       this.headers = { 'Authorization': 'Bearer ' + this.token }
     }
