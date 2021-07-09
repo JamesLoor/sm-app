@@ -6,6 +6,7 @@ import { getName } from "../services/auth"
 const initialState = {
   isLogged: false,
   isLoading: false,
+  isLoginFailed: false,
   userToken: null,
   nameLastname: null
 }
@@ -24,7 +25,7 @@ export const userReducer = (state = initialState, { type, payload }) => {
     case LOGIN_LOADING:
       return {...state, isLoading: true}
     case LOGIN_ERROR:
-      return {...initialState}
+      return {...initialState, isLoginFailed: true}
     case LOGIN_SUCCES:
       return {...state, isLoading: false, isLogged: true, userToken: payload}
     case LOGOUT:
