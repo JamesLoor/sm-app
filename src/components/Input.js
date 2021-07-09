@@ -3,8 +3,7 @@ import styled from 'styled-components'
 
 const InputStyled = styled.div`
   width: 100%;
-  margin: 20px 0;
-  .label {
+  label {
     width: 100%;
     padding: 0px 20px;
     margin-bottom: 3px;
@@ -17,15 +16,20 @@ const InputStyled = styled.div`
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
   }
   .inputError {
-    border: 1px solid red
+    border: 1px solid red;
+  }
+  .labelError {
+    color: red;
   }
 `
-export default function Input({ label, name, value, type, onChange, alert}) {
+export default function Input({ label, name, value, type, onChange, error}) {
   return (
     <InputStyled>
-      <p className="label">{label}</p>
+      <label className={error ? "labelError" : null}>
+        {label} {error ? error : null}
+      </label>
       <input
-        className={`inputContainer ${alert ? 'inputError' : null}`}
+        className={`inputContainer ${error ? 'inputError' : null}`}
         type={type ? type : ""}
         name={name}
         onChange={onChange}
