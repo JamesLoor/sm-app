@@ -27,7 +27,7 @@ const LayoutStyled = styled.div`
 export default function Layout({ children }) {
   return (
     <LayoutStyled>
-      <Sidebar className='sidebar'></Sidebar>
+      <Sidebar />
       <div className='contentAuth'>
         <Header/>
         <main>
