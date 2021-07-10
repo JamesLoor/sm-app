@@ -11,6 +11,7 @@ const DropdownStyled = styled.div`
   padding: 20px;
   background-color: white;
   transition: 300ms all;
+  width: 150px;
   .titleOptions {
     color: gray;
     font-size: 12px;

@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import PatientList from '../components/PatientList'
 
 const PatientStyled = styled.div`
   
@@ -7,7 +8,7 @@ const PatientStyled = styled.div`
 export default function Patient() {
   return (
     <PatientStyled>
-      <h1>Patient</h1>
+      <PatientList/>
     </PatientStyled>
   )
 }
