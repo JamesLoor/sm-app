@@ -13,7 +13,7 @@ const LayoutStyled = styled.div`
   bottom: 0px;
   z-index: 999;
   main {
-    padding-top: 55px;
+    padding: 20px;
   }
   .sidebar {
     width: 20px;
@@ -27,7 +27,7 @@ const LayoutStyled = styled.div`
 export default function Layout({ children }) {
   return (
     <LayoutStyled>
-      <Sidebar className='sidebar'></Sidebar>
+      <Sidebar/>
       <div className='contentAuth'>
         <Header/>
         <main>

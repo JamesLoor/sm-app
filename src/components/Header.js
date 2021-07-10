@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 // Components
-
+import Perfil from './Perfil'
 
 const HeaderStyled = styled.header`
   position: relative;
@@ -48,7 +48,7 @@ export default function Header() {
       <div className="wrapperHeader">
         <div className="containerHeader">
           <div className="logo">Sistema Médico</div>
-
+          <Perfil/>
         </div>
       </div>
     </HeaderStyled>

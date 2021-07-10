@@ -5,7 +5,7 @@ config()
 
 const { REACT_APP_API_URL } = process.env
 
-export const getName = (token) => {
+export const getFullName = (token) => {
   const url = REACT_APP_API_URL + '/auth/me'
   return genService(url, 'get', token)
 }
