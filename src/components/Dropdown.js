@@ -32,15 +32,11 @@ const DropdownStyled = styled.div`
   }
 `
 
-export const Dropdown = ({ titleOptions, options }) => {
-  options = options.map(option => {
-    return <li key={option.props.children}> {option} </li>
-  })
-
+export const Dropdown = ({ title, children }) => {
   return (
     <DropdownStyled>
-        <p className='titleOptions'>{titleOptions}</p>
-        <ul>{options}</ul>
+        <p className='titleOptions'>{title}</p>
+        <ul>{children}</ul>
     </DropdownStyled>
   )
 }
