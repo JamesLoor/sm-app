@@ -10,7 +10,7 @@ const PatientListStyled = styled.div`
 export default function PatientList() {
   return (
     <PatientListStyled>
-      
+      <h1>Hello</h1>
     </PatientListStyled>
   )
 }
