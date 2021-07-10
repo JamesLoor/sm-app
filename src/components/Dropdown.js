@@ -1,23 +1,26 @@
 import styled from "styled-components"
 
 const DropdownStyled = styled.div`
+  position: absolute;
+  top: 120%;
+  right: 0;
   display: flex;
   flex-flow: column wrap;
   border-radius: 20px;
   box-shadow: 0px 0px 6px #ccc;
-  width: 200px;
   padding: 20px;
   background-color: white;
   transition: 300ms all;
-  p {
+  .titleOptions {
     color: gray;
-    font-size: 15px;
+    font-size: 12px;
     margin-bottom: 5px;
   }
   ul {
     list-style: none;
     li {
       cursor: pointer;
+      font-weight: 500;
       transition: 300ms all;
     }
     li:hover {
@@ -26,17 +29,11 @@ const DropdownStyled = styled.div`
   }
 `
 
-export const Dropdown = ({ titleOptions, options }) => {
-  options = options.map(option => {
-    return <li key={option}> {option} </li>
-  })
-
+export const Dropdown = ({ title, children }) => {
   return (
     <DropdownStyled>
-        <p>{ titleOptions }</p>
-        <ul>
-          { options }
-        </ul>
+        <p className='titleOptions'>{title}</p>
+        <ul>{children}</ul>
     </DropdownStyled>
   )
 }

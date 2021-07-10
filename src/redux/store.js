@@ -14,7 +14,6 @@ const rootReducer = combineReducers({
 const composeEnhancers = compose(
   applyMiddleware(thunk),
   persistData('auth'),
-  persistData('user')
 )
 
 export default function generateStore() {

@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Dropdown } from './Dropdown'
 
 // Components
 import Perfil from './Perfil'
@@ -51,10 +50,6 @@ export default function Header() {
           <div className="logo">Sistema Médico</div>
           <Perfil/>
         </div>
-      </div>
-      <div className='dropdownHeader'>
-        <Dropdown options={['Perfil', 'Configuración', 'Cerrar sesión']} titleOptions='Options'>
-        </Dropdown>
       </div>
     </HeaderStyled>
   )

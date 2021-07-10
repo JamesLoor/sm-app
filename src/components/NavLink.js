@@ -15,7 +15,9 @@ const NavLinkStyled = styled.div`
   }
   .link:hover {
     color: #093B32;
-    font-weight: 600;
+  }
+  .link p {
+    font-weight: 500;
   }
 `
 export default function NavLink({ to, text, icon}) {
@@ -23,7 +25,7 @@ export default function NavLink({ to, text, icon}) {
     <NavLinkStyled>
       <Link className="link" to={to}>
         <img src={ icon } alt='Pacientes'/>
-        { text }
+        <p>{ text }</p>
         <img src={ arrow } alt='arrow'/>
       </Link>
     </NavLinkStyled>
