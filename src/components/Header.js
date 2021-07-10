@@ -1,13 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useDispatch } from 'react-redux'
-import { useEffect } from 'react'
-import avatar from '../assets/img/user.svg'
-import { Dropdown } from './Dropdown'
 
-// Redux
-import { logoutUser, getUser } from '../redux/userDucks'
-import { useSelector } from 'react-redux'
+// Components
+
 
 const HeaderStyled = styled.header`
   position: relative;
@@ -39,15 +34,6 @@ const HeaderStyled = styled.header`
   .logoutTesting {
     cursor: pointer;
   }
-  .perfilHeader {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    cursor: pointer;
-    img {
-      margin-left: 10px;
-    }
-  }
   .dropdownHeader {
     display: none;
     position: fixed;
@@ -57,48 +43,15 @@ const HeaderStyled = styled.header`
 `
 export default function Header() {
 
-  const dispatch = useDispatch()
-
-  function handleButton(e) {
-    dispatch(logoutUser())
-  }
-  const userToken = useSelector(store => store.user.userToken)
-  const name = useSelector(store => store.name.nameLastname)
-
-  useEffect(() => {
-    if (!name) {
-      dispatch(getUser(userToken))
-    }
-  }, [name, dispatch, userToken])
-
-  const displayDropdown = () => {
-    let dropdown = document.querySelector('.dropdownHeader')
-    if (!dropdown.style.display || dropdown.style.display === 'none') {
-      dropdown.style.display = 'block'
-    } else {
-      dropdown.style.display = 'none'
-    }
-  }
-  
   return (
     <HeaderStyled>
       <div className="wrapperHeader">
         <div className="containerHeader">
           <div className="logo">Sistema Médico</div>
-          {name && 
-            <div className="perfilHeader" onClick={displayDropdown}>
-              {name} <img src={avatar} alt="logo to user" />
-            </div>}
+
         </div>
-      </div>
-      <div className='dropdownHeader'>
-        <Dropdown options={[
-          <a href='perfil'>Perfil</a>,
-          <a href='config'>Configuración</a>,
-          <button onClick={handleButton}>Cerrar Sesión</button>
-          ]} titleOptions='Options'>
-        </Dropdown>
       </div>
     </HeaderStyled>
   )
 }
+
