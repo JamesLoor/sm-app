@@ -6,7 +6,7 @@ import avatar from '../assets/img/user.svg'
 import { Dropdown } from './Dropdown'
 
 // Redux
-import { /* logoutUser, */ getUser } from '../redux/userDucks'
+import { logoutUser, getUser } from '../redux/userDucks'
 import { useSelector } from 'react-redux'
 
 const HeaderStyled = styled.header`
@@ -59,9 +59,9 @@ export default function Header() {
 
   const dispatch = useDispatch()
 
-  /* function handleButton(e) {
+  function handleButton(e) {
     dispatch(logoutUser())
-  } */
+  }
   const userToken = useSelector(store => store.user.userToken)
   const name = useSelector(store => store.name.nameLastname)
 
@@ -72,7 +72,7 @@ export default function Header() {
   }, [name, dispatch, userToken])
 
   const displayDropdown = () => {
-    const dropdown = document.querySelector('.dropdownHeader')
+    let dropdown = document.querySelector('.dropdownHeader')
     if (!dropdown.style.display || dropdown.style.display === 'none') {
       dropdown.style.display = 'block'
     } else {
@@ -92,11 +92,13 @@ export default function Header() {
         </div>
       </div>
       <div className='dropdownHeader'>
-        <Dropdown options={['Perfil', 'Configuración', 'Cerrar sesión']} titleOptions='Options'>
+        <Dropdown options={[
+          <a href='perfil'>Perfil</a>,
+          <a href='config'>Configuración</a>,
+          <button onClick={handleButton}>Cerrar Sesión</button>
+          ]} titleOptions='Options'>
         </Dropdown>
       </div>
     </HeaderStyled>
   )
 }
-
-// <button className="logoutTesting" onClick={handleButton}>Cerrar Sesión</button>

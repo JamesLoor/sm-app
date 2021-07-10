@@ -16,11 +16,13 @@ const DropdownStyled = styled.div`
   }
   ul {
     list-style: none;
-    li {
+    li * {
       cursor: pointer;
       transition: 300ms all;
+      color: black;
+      text-decoration: none;
     }
-    li:hover {
+    li *:hover {
       color: #093B32;
     }
   }
@@ -28,7 +30,7 @@ const DropdownStyled = styled.div`
 
 export const Dropdown = ({ titleOptions, options }) => {
   options = options.map(option => {
-    return <li key={option}> {option} </li>
+    return <li key={option.props.children}> {option} </li>
   })
 
   return (
