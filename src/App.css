@@ -11,3 +11,12 @@ input, button {
   outline: none;
   background: none;
 }
+
+li {
+  list-style: none;
+}
+
+a {
+  color: #000000;
+  text-decoration: none;
+}

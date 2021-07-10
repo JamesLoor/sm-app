@@ -6,9 +6,10 @@ import Layout from './components/Layout'
 import { PrivateRoute } from './components/PrivateRoute';
 
 // Views
-import Home from './views/Home'
 import Login from './views/Login'
-// import NotFound404 from './views/NotFound404';
+import Home from './views/Home'
+import Patient from './views/Patient'
+import Schedule from './views/Schedule'
 
 // Redux
 import { Provider } from 'react-redux'
@@ -27,7 +28,9 @@ function App() {
           <Switch>
             <Route exact path="/login" component={Login}/>
             <Layout>
-              <PrivateRoute path="/" component={Home}/>
+              <PrivateRoute exact path="/" component={Home}/>
+              <PrivateRoute exact path="/patient" component={Patient}/>
+              <PrivateRoute exact path="/schedule" component={Schedule}/>
             </Layout>
           </Switch>
         </Router>

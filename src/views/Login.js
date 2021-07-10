@@ -11,7 +11,7 @@ import Input from '../components/Input'
 import Button from '../components/Button'
 
 // Redux
-import { loginUser } from '../redux/userDucks'
+import { loginUser } from '../redux/authDucks'
 
 const LoginStyled = styled.div`
   display: grid;
@@ -43,9 +43,9 @@ export default function Login() {
 
   const dispatch = useDispatch()
   const history = useHistory()
-  const isLogged = useSelector(store => store.user.isLogged)
-  const isLoading = useSelector(store => store.user.isLoading)
-  const isLoginFailed = useSelector(store => store.user.isLoginFailed)
+  const isAuth = useSelector(store => store.auth.token)
+  const isAuthFailed = useSelector(store => store.auth.isAuthFailed)
+  const isLoading = useSelector(store => store.auth.isLoading)
 
   const formik = useFormik({
     initialValues: {
@@ -62,8 +62,8 @@ export default function Login() {
   })
 
   useEffect(() => {
-    if(isLogged) history.push('/')
-  }, [isLogged, history])
+    if(isAuth) history.push('/')
+  }, [isAuth, history])
 
   return (
     <LoginStyled>
@@ -86,7 +86,7 @@ export default function Login() {
             error={formik.errors.password}
           />
           {
-            isLoginFailed
+            isAuthFailed
               ? <p className="loginFailed">Correo electronico y contraseña no registrados</p>
               : null
           }
