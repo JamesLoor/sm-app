@@ -3,10 +3,14 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import Button from '../components/Button'
 import Header from '../components/Header'
+import PatientPerfil from '../components/PatientPerfil'
 
 const PatientFormStyled = styled.div`
   .patientFormContainer{
     padding: 20px;
+  }
+  .patientPerfil {
+    width: 240px;
   }
 `
 export default function PatientForm() {
@@ -31,7 +35,9 @@ export default function PatientForm() {
         })}
       </Header>
       <div className="patientFormContainer">
-        <h1>Nuevo paciente</h1>
+        <div className='patientPerfil'>
+          <PatientPerfil></PatientPerfil>
+        </div>
       </div>
     </PatientFormStyled>
   )

@@ -32,7 +32,7 @@ export default function Input({ label, name, value, type, onChange, error}) {
         className={`inputContainer ${error ? 'inputError' : null}`}
         type={type ? type : ""}
         name={name}
-        onChange={onChange}
+        onChange={onChange ? onChange : () => {}}
         value={value}
       />
     </InputStyled>
