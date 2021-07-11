@@ -90,7 +90,7 @@ export default function Login() {
               ? <p className="loginFailed">Correo electronico y contraseña no registrados</p>
               : null
           }
-          <Button type="submit" backgroundColor="#093B32">
+          <Button type="submit" backgroundColor="#093B32" color="#ffffff">
             {isLoading ? "Cargando..." : "Iniciar Sesión"}
           </Button>
         </form>

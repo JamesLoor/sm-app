@@ -40,18 +40,24 @@ const HeaderStyled = styled.header`
     right: 50px;
     top: 50px;
   }
+  .contentHeader {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 10px
+  }
 `
-export default function Header() {
+export default function Header({ children }) {
 
   return (
     <HeaderStyled>
       <div className="wrapperHeader">
         <div className="containerHeader">
-          <div className="logo">Sistema Médico</div>
+          <div className="contentHeader">
+            {children}
+          </div>
           <Perfil/>
         </div>
       </div>
     </HeaderStyled>
   )
 }
-

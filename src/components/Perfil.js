@@ -42,7 +42,7 @@ export default function Perfil() {
 
   useEffect(() => {
     dispatch(getFullNameUser(token))
-  }, [token, dispatch])
+  }, [dispatch, token])
 
   return (
     <PerfilStyled ref={perfilRef} onClick={handleDropdown}>

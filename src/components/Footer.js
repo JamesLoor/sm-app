@@ -5,16 +5,14 @@ const FooterStyled = styled.div`
   p {
     text-align: center;
     font-size: 12px;
+    padding: 0 30px;
   }
 `
 export default function Footer() {
   return (
     <FooterStyled>
       <p>
-        Version 1.0.0 <br />
-        Desarrollado por HM-Computer <br />
-        © 2021 HM-Computer | Todos los <br />
-        derechos reservados
+        Version 1.0.0 Desarrollado por HM-Computer © 2021 HM-Computer | Todos los derechos reservados
       </p>
     </FooterStyled>
   )
