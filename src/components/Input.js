@@ -31,6 +31,8 @@ export default function Input({ label, name, value, type, disabled, onChange, er
       <input
         className={`inputContainer ${error ? 'inputError' : null}`}
         name={name}
+        type={type}
+        disabled={disabled}
         onChange={onChange ? onChange : () => {}}
         value={value}
       />
