@@ -6,12 +6,12 @@ import arrow from '../assets/img/arrow.svg'
 const NavLinkStyled = styled.div`
   .link {
     display: grid;
-    grid-template-columns: 25px 1fr 9px;
+    grid-template-columns: 25px .8fr 9px;
     justify-content: center;
     align-items: center;
     grid-gap: 10px;
     cursor: pointer;
-    margin: auto 15px;
+    /* margin: auto 10px; */
   }
   .link:hover {
     color: #093B32;

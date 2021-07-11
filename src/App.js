@@ -9,6 +9,7 @@ import { PrivateRoute } from './components/PrivateRoute';
 import Login from './views/Login'
 import Home from './views/Home'
 import Patient from './views/Patient'
+import PatientForm from './views/PatientForm'
 import Schedule from './views/Schedule'
 
 // Redux
@@ -29,7 +30,10 @@ function App() {
             <Route exact path="/login" component={Login}/>
             <Layout>
               <PrivateRoute exact path="/" component={Home}/>
+
               <PrivateRoute exact path="/patient" component={Patient}/>
+              <PrivateRoute exact path="/patient/new" component={PatientForm}/>
+
               <PrivateRoute exact path="/schedule" component={Schedule}/>
             </Layout>
           </Switch>

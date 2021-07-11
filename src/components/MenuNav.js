@@ -11,7 +11,7 @@ const MenuNavStyled = styled.nav`
   width: 100%;
   ul {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: .8fr;
     grid-gap: 10px;
   }
 `

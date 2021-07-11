@@ -1,27 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Sidebar } from './Sidebar'
 
 // Components
-import Header from './Header'
+import Sidebar from './Sidebar'
 
 const LayoutStyled = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  position: fixed;
+  display: grid;
+  grid-template-columns: 50px auto;
+  min-height: 100vh;
   top: 0px;
   bottom: 0px;
   z-index: 999;
-  main {
-    padding: 20px;
-  }
-  .sidebar {
-    width: 20px;
-  }
   .contentAuth {
-    position: fixed;
+    position: relative;
     right: 0;
-    left: 250px;
   }
 `
 export default function Layout({ children }) {
@@ -29,10 +21,7 @@ export default function Layout({ children }) {
     <LayoutStyled>
       <Sidebar/>
       <div className='contentAuth'>
-        <Header/>
-        <main>
-          {children}
-        </main>
+        {children}
       </div>
     </LayoutStyled>
   )
