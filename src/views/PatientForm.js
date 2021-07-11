@@ -1,21 +1,28 @@
 import React from 'react'
 import { useState } from 'react'
 import styled from 'styled-components'
+
+// Components
 import Button from '../components/Button'
 import Header from '../components/Header'
+import NewPatientData from '../components/NewPatientData'
+import PatientDocument from '../components/PatientDocument'
 
 const PatientFormStyled = styled.div`
   .patientFormContainer{
-    padding: 20px;
+    padding: 20px 20px 0 20px;
   }
 `
 export default function PatientForm() {
 
   const [buttonActive, setButtonActive] = useState(0)
-  const buttonData = ['Datos', 'Documentos', 'Exploración fisica', 'Operaciones']
+  // const buttonData = ['Datos', 'Documentos', 'Exploración fisica', 'Operaciones']
+  const buttonData = ['Datos']
+
   const handleButton = (index) => {
     setButtonActive(index)
   }
+
   return (
     <PatientFormStyled>
       <Header>
@@ -31,7 +38,8 @@ export default function PatientForm() {
         })}
       </Header>
       <div className="patientFormContainer">
-        <h1>Nuevo paciente</h1>
+        {buttonActive === 0 ? <NewPatientData/> : null}
+        {buttonActive === 1 ? <PatientDocument/> : null}
       </div>
     </PatientFormStyled>
   )
