@@ -1,13 +1,15 @@
 import React from 'react'
 import { useState } from 'react'
 import styled from 'styled-components'
+
+// Components
 import Button from '../components/Button'
 import Header from '../components/Header'
 import PatientPerfil from '../components/PatientPerfil'
 
 const PatientFormStyled = styled.div`
   .patientFormContainer{
-    padding: 20px;
+    padding: 20px 20px 0 20px;
   }
   .patientPerfil {
     width: 240px;
@@ -16,10 +18,13 @@ const PatientFormStyled = styled.div`
 export default function PatientForm() {
 
   const [buttonActive, setButtonActive] = useState(0)
-  const buttonData = ['Datos', 'Documentos', 'Exploración fisica', 'Operaciones']
+  // const buttonData = ['Datos', 'Documentos', 'Exploración fisica', 'Operaciones']
+  const buttonData = ['Datos']
+
   const handleButton = (index) => {
     setButtonActive(index)
   }
+
   return (
     <PatientFormStyled>
       <Header>

@@ -5,7 +5,7 @@ const InputStyled = styled.div`
   width: 100%;
   label {
     width: 100%;
-    padding: 0px 20px;
+    padding: 0 0 0 20px;
     margin-bottom: 3px;
     color: #6C6C6C;
   }
@@ -22,7 +22,7 @@ const InputStyled = styled.div`
     color: red;
   }
 `
-export default function Input({ label, name, value, type, onChange, error}) {
+export default function Input({ label, name, value, type, disabled, onChange, error}) {
   return (
     <InputStyled>
       <label className={error ? "labelError" : null}>
@@ -30,7 +30,6 @@ export default function Input({ label, name, value, type, onChange, error}) {
       </label>
       <input
         className={`inputContainer ${error ? 'inputError' : null}`}
-        type={type ? type : ""}
         name={name}
         onChange={onChange ? onChange : () => {}}
         value={value}
