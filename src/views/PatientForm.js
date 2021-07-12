@@ -41,7 +41,6 @@ export default function PatientForm() {
       </Header>
       <div className="patientFormContainer">
         <div className='patientPerfil'>
-          <PatientPerfil></PatientPerfil>
         </div>
       </div>
     </PatientFormStyled>
