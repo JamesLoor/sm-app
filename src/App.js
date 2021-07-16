@@ -9,6 +9,7 @@ import { PrivateRoute } from './components/PrivateRoute';
 import Login from './views/Login'
 import Home from './views/Home'
 import Patient from './views/Patient'
+import PatientDetail from './views/PatientDetail';
 import PatientForm from './views/PatientForm'
 import Schedule from './views/Schedule'
 
@@ -33,6 +34,7 @@ function App() {
 
               <PrivateRoute exact path="/patient" component={Patient}/>
               <PrivateRoute exact path="/patient/new" component={PatientForm}/>
+              <PrivateRoute exact path="/patient/:id" component={PatientDetail}/>
 
               <PrivateRoute exact path="/schedule" component={Schedule}/>
             </Layout>

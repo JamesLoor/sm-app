@@ -1,32 +1,31 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
+import  { useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 
 // Components
-import Button from '../components/Button'
 import Header from '../components/Header'
-import NewPatientData from '../components/NewPatientData'
+import Button from '../components/Button'
 
-const PatientFormStyled = styled.div`
-  .patientFormContainer{
+const PatientDetailStyled = styled.div`
+  .patientDetailContainer{
     padding: 20px 20px 0 20px;
   }
-  .patientPerfil {
-    width: 240px;
-  }
 `
-export default function PatientForm() {
-
+export default function PatientDetail() {
   const [buttonActive, setButtonActive] = useState(0)
-  // const buttonData = ['Datos', 'Documentos', 'Exploración fisica', 'Operaciones']
   const buttonData = ['Datos']
 
   const handleButton = (index) => {
     setButtonActive(index)
   }
 
+  const { id } = useParams()
+  const patientList = useSelector(store => store.patient.patientList)
+  const patient = patientList.find(patient => patient._id === id)
+
   return (
-    <PatientFormStyled>
+    <PatientDetailStyled>
       <Header>
         {buttonData.map((text, index) => {
           return  <Button
@@ -39,9 +38,14 @@ export default function PatientForm() {
                   </Button>
         })}
       </Header>
-      <div className="patientFormContainer">
-        {buttonActive === 0 ? <NewPatientData/> : null}
+      <div className="patientDetailContainer">
+        {patient && <>
+          <p>{patient.name}</p>
+          <p>{patient.lastname}</p>
+          <p>{patient.DNI}</p>
+          <p>{patient.phone}</p>
+        </>}
       </div>
-    </PatientFormStyled>
+    </PatientDetailStyled>
   )
 }

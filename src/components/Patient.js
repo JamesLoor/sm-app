@@ -1,10 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useHistory } from 'react-router-dom'
 
 const PatientStyled = styled.div`
   padding: 8px 20px;
   border-radius: 20px;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
   .patientList {
     display: grid;
     grid-template-columns: 1fr 1.2fr 1.4fr 1.6fr 1fr;
@@ -16,8 +18,14 @@ const PatientStyled = styled.div`
   }
 `
 export default function Patient({_id, dni, nombre, apellidos, direccion, telefono}){
+
+  const history = useHistory()
+  const handleClick = () => {
+    history.push(`/patient/${_id}`)
+  }
+
   return (
-    <PatientStyled id={_id}>
+    <PatientStyled onClick={handleClick}>
       <ul className='patientList'>
         <li>{dni}</li>
         <li>{nombre}</li>

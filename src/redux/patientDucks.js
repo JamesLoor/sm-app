@@ -1,4 +1,4 @@
-import { getPatients/*, getPatient, savePatient*/ } from '../services/patient'
+import { getPatients, savePatient } from '../services/patient'
 
 // Constants
 
@@ -17,13 +17,9 @@ const GET_PATIENT_LIST_LOADING = 'GET_PATIENT_LIST_LOADING'
 
 const SET_PATIENT_LIST_BY_NAME = 'SET_PATIENT_LIST_BY_NAME'
 
-// const GET_PATIENT_SUCCESS = 'GET_PATIENT_SUCCES'
-// const GET_PATIENT_ERROR = 'GET_PATIENT_ERROR'
-// const GET_PATIENT_LOADING = 'GET_PATIENT_LOADING'
-
-// const POST_NEW_PATIENT_SUCCESS = 'POST_NEW_PATIENT_SUCCES'
-// const POST_NEW_PATIENT_ERROR = 'POST_NEW_PATIENT_ERROR'
-// const POST_NEW_PATIENT_LOADING = 'POST_NEW_PATIENT_LOADING'
+const POST_NEW_PATIENT_SUCCESS = 'POST_NEW_PATIENT_SUCCES'
+const POST_NEW_PATIENT_ERROR = 'POST_NEW_PATIENT_ERROR'
+const POST_NEW_PATIENT_LOADING = 'POST_NEW_PATIENT_LOADING'
 
 // Reducer
 
@@ -36,9 +32,17 @@ export const patientReducer = (state = initialState, { type, payload }) => {
     case GET_PATIENT_LIST_ERROR:
       return {...initialState}
 
+    case POST_NEW_PATIENT_SUCCESS:
+      return state
+    case POST_NEW_PATIENT_ERROR:
+      return state
+    case POST_NEW_PATIENT_LOADING:
+      return state
+
     case SET_PATIENT_LIST_BY_NAME:
       const patientListByName = state.patientList.filter(patient => patient.name.toLowerCase().includes(payload.toLowerCase()))
       return {...state, patientListByName}
+
     default:
       return state
   }
@@ -66,6 +70,30 @@ export const getPatientList = (token, amount, page) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: GET_PATIENT_LIST_ERROR
+    })
+  }
+}
+
+export const saveNewPatient = (token, newPatient) => async (dispatch) => {
+  dispatch({
+    type: POST_NEW_PATIENT_LOADING
+  })
+  try {
+    if(token) {
+      const result = await savePatient(token, newPatient)
+      const { patient } = await result.data.message
+      // dispatch({
+      //   type: POST_NEW_PATIENT_SUCCESS,
+      //   payload: patientId
+      // })
+    } else {
+      dispatch({
+        type: POST_NEW_PATIENT_ERROR
+      })
+    }
+  } catch (error) {
+    dispatch({
+      type: POST_NEW_PATIENT_ERROR
     })
   }
 }
@@ -101,30 +129,6 @@ export const filteredPatientByName = (nameToSearch) => (dispatch) => {
 //   } catch (error) {
 //     dispatch({
 //       type: GET_PATIENT_ERROR
-//     })
-//   }
-// }
-
-// export const saveNewPatient = (token, newPatient) => async (dispatch) => {
-//   dispatch({
-//     type: POST_NEW_PATIENT_LOADING
-//   })
-//   try {
-//     if(token) {
-//       const result = await savePatient(token, newPatient)
-//       const { patientId } = result.message.patient
-//       dispatch({
-//         type: POST_NEW_PATIENT_SUCCESS,
-//         payload: patientId
-//       })
-//     } else {
-//       dispatch({
-//         type: POST_NEW_PATIENT_ERROR
-//       })
-//     }
-//   } catch (error) {
-//     dispatch({
-//       type: POST_NEW_PATIENT_ERROR
 //     })
 //   }
 // }

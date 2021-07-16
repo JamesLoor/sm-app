@@ -2,12 +2,19 @@ import React from 'react'
 import styled from 'styled-components'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import { useSelector, useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+
+// Redux
+import { saveNewPatient } from '../redux/patientDucks';
 
 // Components
 import Input from '../components/Input'
 import PhotoPatient from '../components/PhotoPatient'
 import Button from './Button'
 
+// Utils
+import { cleanObject } from '../utils/cleanObject'
 
 const NewPatientDataStyled = styled.form`
   display: grid;
@@ -53,44 +60,46 @@ const NewPatientDataStyled = styled.form`
 `
 export default function NewPatientData() {
 
+  const history = useHistory()
+  const dispatch = useDispatch()
+  const token = useSelector(store => store.auth.token)
   const formik = useFormik({
     initialValues: {
       name: '',
       lastname: '',
-      birth: '',
       DNI: '',
-      DNIRepresentative: '',
+      birth: '',
       gender: '',
       phone: '',
       mobile: '',
       email: '',
       address: '',
       postalCode: '',
-      mainStreet: '',
+      street: '',
       province: '',
     },
     validationSchema: Yup.object({
       name: Yup.string().required('Obligatorio'),
       lastname: Yup.string().required('Obligatorio'),
-      birth: Yup.string().required('Obligatorio'),
       DNI: Yup.string().required('Obligatorio'),
-      DNIRepresentative: Yup.string().required('Obligatorio'),
-      gender: Yup.string().required('Obligatorio'),
+      birth: Yup.string(),
+      gender: Yup.string(),
       phone: Yup.string(),
       mobile: Yup.string(),
       email: Yup.string(),
       address: Yup.string(),
       postalCode: Yup.string(),
-      mainStreet: Yup.string(),
-      city: Yup.string()
+      street: Yup.string(),
+      province: Yup.string()
     }),
-    onSubmit: async (values) => {
-      console.log(values)
+    onSubmit: async (newPatient) => {
+      await dispatch(saveNewPatient(token, cleanObject(newPatient)))
+      history.push('/patient')
     }
   })
 
   const handleCancel = () => {
-    console.log('Cancelando...')
+    history.push('/patient')
   }
 
   return (
@@ -127,13 +136,6 @@ export default function NewPatientData() {
               onChange={formik.handleChange}
               value={formik.values.DNI}
               error={formik.errors.DNI}
-            />
-            <Input
-              label="C. Representante"
-              name="DNIRepresentative"
-              onChange={formik.handleChange}
-              value={formik.values.DNIRepresentative}
-              error={formik.errors.DNIRepresentative}
             />
             <Input
               label="Genero"
@@ -192,17 +194,17 @@ export default function NewPatientData() {
           />
           <Input
             label="Calle principal"
-            name="mainStreet"
+            name="street"
             onChange={formik.handleChange}
-            value={formik.values.mainStreet}
-            error={formik.errors.mainStreet}
+            value={formik.values.street}
+            error={formik.errors.street}
           />
           <Input
             label="Ciudad"
-            name="city"
+            name="province"
             onChange={formik.handleChange}
-            value={formik.values.city}
-            error={formik.errors.city}
+            value={formik.values.province}
+            error={formik.errors.province}
           />
         </div>
       </div>
