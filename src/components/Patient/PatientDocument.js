@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import PatientBasicInfo from './PatientBasicInfo'
 
 // Components
 
@@ -12,7 +11,7 @@ const PatientDocumentStyled = styled.div`
 export default function PatientDocument() {
   return (
     <PatientDocumentStyled>
-      <PatientBasicInfo/>
+      <h1>Documentos</h1>
     </PatientDocumentStyled>
   )
 }

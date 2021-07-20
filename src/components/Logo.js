@@ -8,6 +8,7 @@ const LogoStyled = styled.figure`
   align-items: center;
   grid-gap: 10px;
   width: 100%;
+  user-select: none;
   .circleLogo {
     background-color: #093B32;
     padding: 10px;

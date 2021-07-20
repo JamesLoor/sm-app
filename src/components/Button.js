@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const ButtonStyled = styled.button`
   width: ${props => props.width ? props.width : '100%'};
   background: ${props => props.backgroundColor ? props.backgroundColor : '#ffffff'};
-  color: ${props => props.color ? props.color : "#000000"};
+  color: ${props => props.color ? props.color : '#000000'};
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
   border-radius: 20px;
   padding: 7.5px 20px;

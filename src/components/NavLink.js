@@ -23,7 +23,7 @@ const NavLinkStyled = styled.div`
 export default function NavLink({ to, text, icon}) {
   return (
     <NavLinkStyled>
-      <Link className="link" to={to}>
+      <Link className='link' to={to}>
         <img src={ icon } alt='Pacientes'/>
         <p>{ text }</p>
         <img src={ arrow } alt='arrow'/>

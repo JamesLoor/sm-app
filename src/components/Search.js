@@ -37,8 +37,8 @@ export default function Search() {
 
   return (
     <SearchStyled>
-      <input type="text" placeholder='Buscar por nombre' value={inputValue} onChange={handleSearch}/>
-      <img src={lens} alt="magnifying glass" />
+      <input type='text' placeholder='Buscar por nombre' value={inputValue} onChange={handleSearch}/>
+      <img src={lens} alt='magnifying glass' />
     </SearchStyled>
   )
 }

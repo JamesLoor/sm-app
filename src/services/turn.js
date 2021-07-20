@@ -1,4 +1,4 @@
-import { genService } from "../utils/genService"
+import { genService } from '../utils/genService'
 const { REACT_APP_API_URL } = process.env
 
 export const getTurns = (token, amount, page) => {

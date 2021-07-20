@@ -1,4 +1,4 @@
-import { getFullName } from "../services/auth"
+import { getFullName } from '../services/auth'
 
 // Constants
 
@@ -19,7 +19,7 @@ export const userReducer = (state = initialState, { type, payload }) => {
     case GET_FULLNAME_LOADING:
       return {...state, isLoading: true}
     case GET_FULLNAME_SUCCES:
-      return {...state, fullName: payload}
+      return {...state, isLoading:false, fullName: payload}
     case GET_FULLNAME_ERROR:
       return {...initialState, isFailed: true}
 

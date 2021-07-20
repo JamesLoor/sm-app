@@ -6,17 +6,17 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
 // Redux
-import { saveNewPatient } from '../redux/patientDucks';
+import { saveNewPatient } from '../../redux/patientDucks';
 
 // Components
-import Input from '../components/Input'
-import PhotoPatient from '../components/PhotoPatient'
-import Button from './Button'
+import Input from '../Input'
+import PhotoPatient from '../PhotoPatient'
+import Button from '../Button'
 
 // Utils
-import { cleanObject } from '../utils/cleanObject'
+import { cleanObject } from '../../utils/cleanObject'
 
-const NewPatientDataStyled = styled.form`
+const PatientFormNewStyled = styled.form`
   display: grid;
   gap: 20px;
   .formPersonalDataContainer {
@@ -39,7 +39,7 @@ const NewPatientDataStyled = styled.form`
   }
   .formContactInfoInputs {
     display: grid;
-    grid-template-columns: .8fr .8fr 1.5fr;
+    grid-template-columns: 1.5fr .8fr .8fr ;
     gap: 10px;
   }
   .formAddressInputs {
@@ -58,7 +58,7 @@ const NewPatientDataStyled = styled.form`
     gap: 15px;
   }
 `
-export default function NewPatientData() {
+export default function PatientFormNew() {
 
   const history = useHistory()
   const dispatch = useDispatch()
@@ -86,60 +86,58 @@ export default function NewPatientData() {
       gender: Yup.string(),
       phone: Yup.string(),
       mobile: Yup.string(),
-      email: Yup.string(),
+      email: Yup.string().email('Invalido').required('Obligatorio'),
       address: Yup.string(),
       postalCode: Yup.string(),
       street: Yup.string(),
-      province: Yup.string()
+      province: Yup.string(),
     }),
     onSubmit: async (newPatient) => {
-      await dispatch(saveNewPatient(token, cleanObject(newPatient)))
-      history.push('/patient')
+      const wasSaved = await dispatch(saveNewPatient(token, cleanObject(newPatient)))
+      if(wasSaved) history.push('/patient')
     }
   })
 
-  const handleCancel = () => {
-    history.push('/patient')
-  }
+  const handleCleanForm = () => formik.resetForm()
 
   return (
-    <NewPatientDataStyled onSubmit={formik.handleSubmit}>
-      <div className="formPersonalDataContainer">
+    <PatientFormNewStyled onSubmit={formik.handleSubmit}>
+      <div className='formPersonalDataContainer'>
         <PhotoPatient/>
-        <div className="personalData">
-          <h2 className="formTitle">Datos Personales</h2>
-          <div className="personalDataInputs">
+        <div className='personalData'>
+          <h2 className='formTitle'>Datos Personales</h2>
+          <div className='personalDataInputs'>
             <Input
-              label="Nombre"
-              name="name"
+              label='Nombre'
+              name='name'
               onChange={formik.handleChange}
               value={formik.values.name}
               error={formik.errors.name}
             />
             <Input
-              label="Apellidos"
-              name="lastname"
+              label='Apellidos'
+              name='lastname'
               onChange={formik.handleChange}
               value={formik.values.lastname}
               error={formik.errors.lastname}
             />
             <Input
-              label="F. nacimiento"
-              name="birth"
+              label='F. nacimiento'
+              name='birth'
               onChange={formik.handleChange}
               value={formik.values.birth}
               error={formik.errors.birth}
             />
             <Input
-              label="Cedula"
-              name="DNI"
+              label='Cedula'
+              name='DNI'
               onChange={formik.handleChange}
               value={formik.values.DNI}
               error={formik.errors.DNI}
             />
             <Input
-              label="Genero"
-              name="gender"
+              label='Genero'
+              name='gender'
               onChange={formik.handleChange}
               value={formik.values.gender}
               error={formik.errors.gender}
@@ -148,60 +146,60 @@ export default function NewPatientData() {
         </div>
       </div>
 
-      <div className="formContactInfoContainer">
-        <h2 className="formTitle">Datos Personales</h2>
-        <div className="formContactInfoInputs">
+      <div className='formContactInfoContainer'>
+        <h2 className='formTitle'>Información de contacto</h2>
+        <div className='formContactInfoInputs'>
           <Input
-            label="Telófono"
-            name="phone"
+            label='Correo electrónico'
+            name='email'
+            onChange={formik.handleChange}
+            value={formik.values.email}
+            error={formik.errors.email}
+          />
+          <Input
+            label='Telófono'
+            name='phone'
             onChange={formik.handleChange}
             value={formik.values.phone}
             error={formik.errors.phone}
           />
           <Input
-            label="Celular"
-            name="mobile"
+            label='Celular'
+            name='mobile'
             onChange={formik.handleChange}
             value={formik.values.mobile}
             error={formik.errors.mobile}
           />
-          <Input
-            label="Correo electrónico"
-            name="email"
-            onChange={formik.handleChange}
-            value={formik.values.email}
-            error={formik.errors.email}
-          />
         </div>
       </div>
 
-      <div className="formAddressContainer">
-        <h2 className="formTitle">Datos Personales</h2>
-        <div className="formAddressInputs">
+      <div className='formAddressContainer'>
+        <h2 className='formTitle'>Dirección</h2>
+        <div className='formAddressInputs'>
           <Input
-            label="Dirección"
-            name="address"
+            label='Dirección'
+            name='address'
             onChange={formik.handleChange}
             value={formik.values.address}
             error={formik.errors.address}
           />
           <Input
-            label="Codigo postal"
-            name="postalCode"
+            label='Codigo postal'
+            name='postalCode'
             onChange={formik.handleChange}
             value={formik.values.postalCode}
             error={formik.errors.postalCode}
           />
           <Input
-            label="Calle principal"
-            name="street"
+            label='Calle principal'
+            name='street'
             onChange={formik.handleChange}
             value={formik.values.street}
             error={formik.errors.street}
           />
           <Input
-            label="Ciudad"
-            name="province"
+            label='Ciudad'
+            name='province'
             onChange={formik.handleChange}
             value={formik.values.province}
             error={formik.errors.province}
@@ -209,14 +207,14 @@ export default function NewPatientData() {
         </div>
       </div>
 
-      <div className="formButtonContainer">
-        <Button type="submit" backgroundColor="#093B32" color="#ffffff">
+      <div className='formButtonContainer'>
+        <Button type='submit' backgroundColor='#093B32' color='#ffffff'>
           Guardar
         </Button>
-        <Button action={handleCancel} type="button" backgroundColor="#891919" color="#ffffff">
-          Cancelar
+        <Button action={handleCleanForm} type='button' backgroundColor='#ffffff' color='#6C6C6C'>
+          Limpiar
         </Button>
       </div>
-    </NewPatientDataStyled>
+    </PatientFormNewStyled>
   )
 }

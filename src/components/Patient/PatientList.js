@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import Patient from './Patient'
 
 // Redux
-import { getPatientList } from '../redux/patientDucks'
+import { getPatientList } from '../../redux/patientDucks'
 
 const PatientListStyled = styled.div`
   width: 100%;
@@ -23,7 +23,7 @@ const PatientListStyled = styled.div`
   }
   .titleList{
     display: grid;
-    grid-template-columns: 1fr 1.2fr 1.4fr 1.6fr 1fr;
+    grid-template-columns: 1fr 1.2fr 1.4fr 1.6fr 1fr 40px;
     gap: 10px;
     justify-content: center;
     align-items: center;
@@ -40,7 +40,7 @@ export default function PatientList() {
   const token = useSelector(store => store.auth.token)
   const patientListByName = useSelector(store => store.patient.patientListByName)
   const patientList = useSelector(store => {
-    if(patientListByName.length > 0) return patientListByName
+  if(patientListByName.length > 0) return patientListByName
     else return store.patient.patientList
   })
 

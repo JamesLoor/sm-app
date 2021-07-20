@@ -15,7 +15,7 @@ import { useState } from 'react'
 import { Dropdown } from './Dropdown'
 import DropdownOption from './DropdownOption'
 
-const PerfilStyled = styled.div`
+const HeaderProfileStyled = styled.div`
   position: relative;
   display: grid;
   grid-template-columns: auto auto;
@@ -24,13 +24,13 @@ const PerfilStyled = styled.div`
   align-items: center;
   cursor: pointer;
 `
-export default function Perfil() {
+export default function HeaderProfile() {
 
   const dispatch = useDispatch()
   const token = useSelector(store => store.auth.token)
   const fullName = useSelector(store => store.user.fullName) || ''
   const [dropdownActive, setDropdownActive] = useState(false)
-  const perfilRef = useRef(null)
+  const headerProfileRef = useRef(null)
 
   const handleDropdown = (e) => {
     setDropdownActive(c => !c)
@@ -45,9 +45,9 @@ export default function Perfil() {
   }, [dispatch, token])
 
   return (
-    <PerfilStyled ref={perfilRef} onClick={handleDropdown}>
+    <HeaderProfileStyled ref={headerProfileRef} onClick={handleDropdown}>
       <p>{capitalize(fullName)}</p>
-      <img src={avatar} alt="Avatar to user" />
+      <img src={avatar} alt='Avatar to user' />
       {
         dropdownActive
           ? <Dropdown title='Opciones'>
@@ -55,6 +55,6 @@ export default function Perfil() {
             </Dropdown>
           : null
       }
-    </PerfilStyled>
+    </HeaderProfileStyled>
   )
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 // Components
-import Perfil from './Perfil'
+import HeaderProfile from './HeaderProfile'
 
 const HeaderStyled = styled.header`
   position: relative;
@@ -50,12 +50,12 @@ export default function Header({ children }) {
 
   return (
     <HeaderStyled>
-      <div className="wrapperHeader">
-        <div className="containerHeader">
-          <div className="contentHeader">
+      <div className='wrapperHeader'>
+        <div className='containerHeader'>
+          <div className='contentHeader'>
             {children}
           </div>
-          <Perfil/>
+          <HeaderProfile/>
         </div>
       </div>
     </HeaderStyled>

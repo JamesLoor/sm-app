@@ -15,7 +15,7 @@ export default function Schedule() {
       <Header>
 
       </Header>
-      <div className="scheduleContainer">
+      <div className='scheduleContainer'>
         <h1>Schedule</h1>
       </div>
     </ScheduleStyled>

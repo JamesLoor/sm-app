@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { useHistory } from 'react-router'
 
 // Components
-import Footer from './Footer'
 import MenuNav from './MenuNav'
 import Logo from './Logo'
 
@@ -22,13 +21,18 @@ const SidebarStyled = styled.div`
   z-index: 1000;
   left: ${props => props.isOpen ? '0px;' : '-200px;'};
   transition: .3s;
+  .menuHamburger {
+    cursor: pointer;
+  }
   .sideBarHeader {
     display: grid;
     grid-template-columns: 1fr 25px;
     align-items: center;
   }
-  .menuHamburger {
-    cursor: pointer;
+  .sideBarFooter {
+    text-align: center;
+    font-size: 12px;
+    padding: 0 30px;
   }
 `
 
@@ -72,10 +76,12 @@ export default function Sidebar() {
       <SidebarStyled isOpen={sideBarOpen}>
         <div className='sideBarHeader'>
           <Logo/>
-          <img onClick={handleSideBar} className='menuHamburger' src={menu} alt="Menú" />
+          <img onClick={handleSideBar} className='menuHamburger' src={menu} alt='Menú' />
         </div>
         <MenuNav/>
-        <Footer/>
+        <p className='sideBarFooter'>
+          Version 1.0.0 Desarrollado por HM-Computer © 2021 HM-Computer | Todos los derechos reservados
+        </p>
       </SidebarStyled>
     </>
   )

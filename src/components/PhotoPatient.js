@@ -16,7 +16,7 @@ const PhotoPatientStyled = styled.div`
 export default function PhotoPatient() {
   return (
     <PhotoPatientStyled>
-      <img src={defaultAvatar} alt="Default avatar" />
+      <img src={defaultAvatar} alt='Default avatar' />
     </PhotoPatientStyled>
   )
 }

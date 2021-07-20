@@ -16,7 +16,7 @@ export const loginService = (user) => {
   if (email && password) {
     const encode = window.btoa(email + ':' + password)
     return axios.post(`${REACT_APP_API_URL}/auth/sign-in`, {}, {
-      headers: { 'Authorization': 'Basic ' + encode, 'Content-type': "application/json" }
+      headers: { 'Authorization': 'Basic ' + encode, 'Content-type': 'application/json' }
     })
   } else {
     return axios.post(`${REACT_APP_API_URL}/auth/sign-in`, {})

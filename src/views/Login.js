@@ -6,7 +6,6 @@ import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
 // Components
-import Box from '../components/Box'
 import Input from '../components/Input'
 import Button from '../components/Button'
 
@@ -21,6 +20,12 @@ const LoginStyled = styled.div`
   padding: 20px;
   justify-content: center;
   align-items: center;
+  .loginContainer {
+    width: 100%;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+  }
   form {
     display: grid;
     grid-template-columns: 1fr;
@@ -67,34 +72,34 @@ export default function Login() {
 
   return (
     <LoginStyled>
-      <Box>
-        <p className="loginTitle">Iniciar Sesión</p>
+      <div className='loginContainer'>
+        <p className='loginTitle'>Iniciar Sesión</p>
         <form onSubmit={formik.handleSubmit}>
           <Input
-            label="Correo electrónico"
-            name="email"
+            label='Correo electrónico'
+            name='email'
             onChange={formik.handleChange}
             value={formik.values.email}
             error={formik.errors.email}
           />
           <Input
-            label="Contraseña"
-            name="password"
-            type="password"
+            label='Contraseña'
+            name='password'
+            type='password'
             onChange={formik.handleChange}
             value={formik.values.password}
             error={formik.errors.password}
           />
           {
             isAuthFailed
-              ? <p className="loginFailed">Correo electronico y contraseña no registrados</p>
+              ? <p className='loginFailed'>Correo electronico y contraseña no registrados</p>
               : null
           }
-          <Button type="submit" backgroundColor="#093B32" color="#ffffff">
-            {isLoading ? "Cargando..." : "Iniciar Sesión"}
+          <Button type='submit' backgroundColor='#093B32' color='#ffffff'>
+            {isLoading ? 'Cargando...' : 'Iniciar Sesión'}
           </Button>
         </form>
-      </Box>
+      </div>
     </LoginStyled>
   )
 }

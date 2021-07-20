@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useHistory } from "react-router-dom";
 
 // Components
-import PatientList from '../components/PatientList'
+import PatientList from '../components/Patient/PatientList'
 import Header from '../components/Header'
 import Search from '../components/Search'
 import Button from '../components/Button'
@@ -17,7 +17,7 @@ export default function Patient() {
 
   const history = useHistory()
   const handleNewPatient = () => {
-    history.push('/patient/new')
+    history.push('/new/patient')
   }
 
   return (

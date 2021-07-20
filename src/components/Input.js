@@ -21,21 +21,28 @@ const InputStyled = styled.div`
   .labelError {
     color: red;
   }
+  .errorMessage {
+    font-size: 12px;
+    color: red;
+    width: 100%;
+    padding: 0 0 0 20px;
+  }
 `
 export default function Input({ label, name, value, type, disabled, onChange, error}) {
   return (
     <InputStyled>
-      <label className={error ? "labelError" : null}>
-        {label} {error ? error : null}
+      <label className={error ? 'labelError' : ''}>
+        {label}
       </label>
       <input
-        className={`inputContainer ${error ? 'inputError' : null}`}
+        className={`inputContainer ${error ? 'inputError' : ''}`}
         name={name}
         type={type}
         disabled={disabled}
         onChange={onChange ? onChange : () => {}}
         value={value}
       />
+      <p className='errorMessage'>{error ? error : ''}</p>
     </InputStyled>
   )
 }
