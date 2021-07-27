@@ -8,9 +8,9 @@ import { PrivateRoute } from './components/PrivateRoute';
 // Views
 import Login from './views/Login'
 import Home from './views/Home'
-import Patient from './views/Patient'
-import PatientNew from './views/PatientNew'
-import PatientDetail from './views/PatientDetail';
+import Patient from './views/PatientView/Patient'
+import PatientNew from './views/PatientView/PatientNew'
+import PatientDetail from './views/PatientView/PatientDetail';
 import Schedule from './views/Schedule'
 
 // Redux

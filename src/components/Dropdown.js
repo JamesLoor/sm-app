@@ -1,3 +1,4 @@
+import React, { useRef } from 'react'
 import styled from 'styled-components'
 
 const DropdownStyled = styled.div`
@@ -32,11 +33,22 @@ const DropdownStyled = styled.div`
   }
 `
 
-export const Dropdown = ({ title, children }) => {
+export const Dropdown = ({ children, title, isDropdownOpen, setDropdownOpen }) => {
+
+  const dropdownRef = useRef(null)
+  const handleDropdown = (e) => {
+    if(dropdownRef.current !== e.target) {
+      setDropdownOpen(false)
+    }
+  }
+
   return (
-    <DropdownStyled>
-        <p className='titleOptions'>{title}</p>
-        <ul>{children}</ul>
-    </DropdownStyled>
+    <>
+      {isDropdownOpen &&
+        <DropdownStyled ref={dropdownRef} onClick={handleDropdown}>
+          <p className='titleOptions'>{title}</p>
+          <ul>{children}</ul>
+      </DropdownStyled>}
+    </>
   )
 }

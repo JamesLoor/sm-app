@@ -67,10 +67,10 @@ export default function PatientList() {
                   key={patient._id}
                   _id={patient._id}
                   dni={patient.DNI}
-                  nombre={patient.name}
-                  apellidos={patient.lastname}
-                  direccion={patient.address}
-                  telefono={patient.phone}
+                  name={patient.name}
+                  lastname={patient.lastname}
+                  address={patient.address}
+                  phone={patient.phone}
                 />
               )
             })

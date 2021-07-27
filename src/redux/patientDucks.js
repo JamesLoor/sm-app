@@ -115,10 +115,10 @@ export const getPatientById = (token, id) => async (dispatch) => {
   try {
     if(token) {
       const result = await getPatient(token, id)
-      const { patientID } = result.data.message.patient
+      const { patient } = result.data.message
       dispatch({
         type: GET_PATIENT_SUCCESS,
-        payload: patientID
+        payload: patient
       })
     } else {
       dispatch({

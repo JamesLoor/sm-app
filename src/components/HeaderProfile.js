@@ -2,6 +2,9 @@ import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
 
+// Components
+import DropdownOption from './DropdownOption'
+
 // Redux
 import { getFullNameUser } from '../redux/userDucks'
 import { logoutUser } from '../redux/authDucks';
@@ -11,9 +14,10 @@ import avatar from '../assets/img/avatar.svg'
 
 // Utils
 import { capitalize } from '../utils/capitalize'
-import { useState } from 'react'
 import { Dropdown } from './Dropdown'
-import DropdownOption from './DropdownOption'
+
+// Hooks
+import { useDropdown } from '../hooks/useDropdown'
 
 const HeaderProfileStyled = styled.div`
   position: relative;
@@ -26,16 +30,17 @@ const HeaderProfileStyled = styled.div`
 `
 export default function HeaderProfile() {
 
+  const [isDropdownOpen, setDropdownOpen] = useDropdown()
   const dispatch = useDispatch()
   const token = useSelector(store => store.auth.token)
   const fullName = useSelector(store => store.user.fullName) || ''
-  const [dropdownActive, setDropdownActive] = useState(false)
   const headerProfileRef = useRef(null)
 
-  const handleDropdown = (e) => {
-    setDropdownActive(c => !c)
-  }
-
+  /**
+   * Function to logout User
+   * Delete the token of locastorage || Store
+   * Redirect to login
+   */
   const handleLogout = () => {
     dispatch(logoutUser())
   }
@@ -45,16 +50,12 @@ export default function HeaderProfile() {
   }, [dispatch, token])
 
   return (
-    <HeaderProfileStyled ref={headerProfileRef} onClick={handleDropdown}>
+    <HeaderProfileStyled ref={headerProfileRef} onClick={() => setDropdownOpen(true)}>
       <p>{capitalize(fullName)}</p>
       <img src={avatar} alt='Avatar to user' />
-      {
-        dropdownActive
-          ? <Dropdown title='Opciones'>
-              <DropdownOption action={handleLogout}>Cerrar sesión</DropdownOption>
-            </Dropdown>
-          : null
-      }
+      <Dropdown isDropdownOpen={isDropdownOpen} setDropdownOpen={setDropdownOpen} title='Opciones'>
+        <DropdownOption action={handleLogout}>Cerrar sesión</DropdownOption>
+      </Dropdown>
     </HeaderProfileStyled>
   )
 }

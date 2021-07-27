@@ -14,7 +14,9 @@ const ButtonStyled = styled.button`
   justify-content: center;
   align-items: center;
 `
-export default function Button({ children, backgroundColor, color, width, type, action}) {
+export default function Button({ children, backgroundColor, color, width, type, action }) {
+  
+
   return (
     <ButtonStyled onClick={action} type={type} backgroundColor={backgroundColor} color={color} width={width}>
       {children}

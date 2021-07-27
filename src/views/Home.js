@@ -14,6 +14,7 @@ export default function Home() {
     <HomeStyled>
       <Header/>
       <div className='homeContainer'>
+        <h1>Home</h1>
       </div>
     </HomeStyled>
   )

@@ -3,10 +3,10 @@ import styled from 'styled-components'
 import { useHistory } from "react-router-dom";
 
 // Components
-import PatientList from '../components/Patient/PatientList'
-import Header from '../components/Header'
-import Search from '../components/Search'
-import Button from '../components/Button'
+import PatientList from '../../components/Patient/PatientList'
+import Header from '../../components/Header'
+import Search from '../../components/Search'
+import Button from '../../components/Button'
 
 const PatientStyled = styled.div`
   .patientListContainer {

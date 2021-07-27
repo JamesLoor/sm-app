@@ -4,20 +4,20 @@ export const useModal = () => {
   const [isModalOpen, setModalOpen] = useState(false)
 
   /**
-   * Funcion que permite abrir el modal
-   * @returns isOpen = true
+   * Funcion to open the modal
+   * isOpen = true
    */
   const openModal = () => setModalOpen(true)
 
   /**
-   * Funcion que permite cerrar el modal
-   * @returns isOpen = false
+   * Funcion to close the modal
+   * isOpen = false
    */
   const closeModal = () => setModalOpen(false)
 
   /**
-   * Funcion que permite alteranr el modal entre true y false
-   * @returns isOpen = !isOpen
+   * Function to toggle the modal
+   * isOpen = !isOpen
    */
   const toggleModal = () => setModalOpen(c => !c)
 
