@@ -19,11 +19,6 @@ const composeEnhancers = composeWithDevTools(
   persistData('auth'),
 )
 
-// const composeEnhancers = compose(
-//   applyMiddleware(thunk),
-//   persistData('auth'),
-// )
-
 export default function generateStore() {
   const store = createStore( rootReducer, composeEnhancers)
   return store
