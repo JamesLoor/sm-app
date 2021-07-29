@@ -1,21 +1,22 @@
 import React from 'react'
 import styled from 'styled-components'
-
-// Components
 import HeaderProfile from './HeaderProfile'
 
 const HeaderStyled = styled.header`
   position: relative;
   width: 100%;
   background-color: #ffffff;
-  padding: 14px 0;
+  padding: 10px 0;
+  min-height: 64px;
   box-shadow: 0px 0px 7px #1111117a;
+  display: grid;
   .wrapperHeader {
     padding: 0px 20px;
     margin: 0 auto;
     display: inherit;
     justify-content: inherit;
     align-items: inherit;
+    width: inherit;
   }
   .containerHeader {
     display: grid;

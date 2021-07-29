@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 
 // Static
-import home from '../assets/img/home.svg'
-import schedule from '../assets/img/schedule.svg'
-import user from '../assets/img/user.svg'
+import home from '../../assets/img/home.svg'
+import schedule from '../../assets/img/schedule.svg'
+import user from '../../assets/img/user.svg'
 import NavLink from './NavLink'
 
 const MenuNavStyled = styled.nav`

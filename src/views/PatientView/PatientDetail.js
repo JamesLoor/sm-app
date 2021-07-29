@@ -2,16 +2,14 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import  { useSelector, useDispatch } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
-
-// Components
 import Header from '../../components/Header'
 import Button from '../../components/Button'
 import PatientFormView from '../../components/Patient/PatientFormView'
-
-// Redux
 import { getPatientById } from '../../redux/patientDucks'
 import { useState } from 'react'
 import PatientDocuments from '../../components/Patient/PatientDocuments'
+import ButtonIcon from '../../components/ButtonIcon'
+import arrowLeft from '../../assets/img/arrow-left.svg'
 
 const PatientDetailStyled = styled.div`
   .patientDetailContainer{
@@ -39,27 +37,17 @@ export default function PatientDetail() {
   return (
     <PatientDetailStyled>
       <Header>
-        <Button
-          action={() => history.goBack()}
-          type='button'
-          backgroundColor='#ffffff'
-          color='#6C6C6C'>
-          Volver
-        </Button>
+        <ButtonIcon action={() => history.goBack()}  icon={arrowLeft} alt='Arrow to back'/>
 
         <Button
           action={() => setComponent('')}
-          type='button'
-          backgroundColor='#ffffff'
-          color='#6C6C6C'>
+          type='button'>
           Datos
         </Button>
 
         <Button
           action={() => setComponent('Documents')}
-          type='button'
-          backgroundColor='#ffffff'
-          color='#6C6C6C'>
+          type='button'>
           Documentos
         </Button>
       </Header>

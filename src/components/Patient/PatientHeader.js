@@ -6,10 +6,10 @@ const PatientHeaderStyled = styled.div`
 `
 
 export default function PatientHeader() {
-    return(
-        <PatientHeaderStyled>
-            <p>Documentos Adjuntos</p>
-            <button>+</button>
-        </PatientHeaderStyled>
-    )
+	return(
+		<PatientHeaderStyled>
+			<p>Documentos Adjuntos</p>
+			<button>+</button>
+		</PatientHeaderStyled>
+	)
 }

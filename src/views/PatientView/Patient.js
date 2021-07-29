@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 
 // Components
 import PatientList from '../../components/Patient/PatientList'
@@ -24,7 +24,7 @@ export default function Patient() {
     <PatientStyled>
       <Header>
         <Search/>
-        <Button action={handleNewPatient} type='button' width='200px' backgroundColor='#ffffff' color='#6C6C6C'>
+        <Button action={handleNewPatient} type='button'>
           Nuevo paciente
         </Button>
       </Header>

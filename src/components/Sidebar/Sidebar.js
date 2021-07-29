@@ -1,13 +1,9 @@
 import React, { useRef } from 'react'
 import styled from 'styled-components'
 import { useHistory } from 'react-router'
-
-// Components
+import Logo from '../Logo'
+import menu from '../../assets/img/menu.svg'
 import MenuNav from './MenuNav'
-import Logo from './Logo'
-
-// Static
-import menu from '../assets/img/menu.svg'
 import { useState } from 'react'
 
 const SidebarStyled = styled.div`

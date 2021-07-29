@@ -4,12 +4,8 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-
-// Components
 import Input from '../components/Input'
 import Button from '../components/Button'
-
-// Redux
 import { loginUser } from '../redux/authDucks'
 
 const LoginStyled = styled.div`
@@ -20,11 +16,13 @@ const LoginStyled = styled.div`
   padding: 20px;
   justify-content: center;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.15);
   .loginContainer {
     width: 100%;
     padding: 20px;
-    border-radius: 20px;
+    background-color: #ffffff;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
   }
   form {
     display: grid;

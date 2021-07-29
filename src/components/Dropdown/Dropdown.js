@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 const DropdownStyled = styled.div`
@@ -13,6 +13,7 @@ const DropdownStyled = styled.div`
   background-color: white;
   transition: 300ms all;
   width: 150px;
+  cursor: default;
   .titleOptions {
     color: gray;
     font-size: 12px;
@@ -33,22 +34,15 @@ const DropdownStyled = styled.div`
   }
 `
 
-export const Dropdown = ({ children, title, isDropdownOpen, setDropdownOpen }) => {
-
-  const dropdownRef = useRef(null)
-  const handleDropdown = (e) => {
-    if(dropdownRef.current !== e.target) {
-      setDropdownOpen(false)
-    }
-  }
-
+export const Dropdown = ({ children, title, isDropdownOpen }) => {
   return (
     <>
       {isDropdownOpen &&
-        <DropdownStyled ref={dropdownRef} onClick={handleDropdown}>
+        <DropdownStyled>
           <p className='titleOptions'>{title}</p>
           <ul>{children}</ul>
-      </DropdownStyled>}
+        </DropdownStyled>
+      }
     </>
   )
 }

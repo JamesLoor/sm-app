@@ -2,15 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-
-// Components
 import Button from '../Button'
 import { Modal } from '../Modal'
-
-// Redux
 import { deletePatientById } from '../../redux/patientDucks'
-
-// Hooks
 import { useModal } from '../../hooks/useModal'
 
 const PatientStyled = styled.div`
@@ -35,16 +29,10 @@ export default function Patient({_id, dni, name, lastname, address, phone}){
   const token = useSelector(store => store.auth.token)
   const [isModalOpen, setModalOpen] = useModal()
 
-  /**
-   * Funcion que enviara al usuario a los detalles del paciente clickeado
-   */
   const handleClickPatient = (e) => {
     history.push(`/patient/${_id}`)
   }
 
-  /**
-   * Funcion que eliminara un paciente de la lista
-   */
   const handleDelete = (e) => {
     e.stopPropagation()
     setModalOpen(true)

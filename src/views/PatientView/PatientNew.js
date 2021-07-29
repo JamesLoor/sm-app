@@ -1,11 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useHistory } from 'react-router'
-
-// Components
+import arrowLeft from '../../assets/img/arrow-left.svg'
 import Header from '../../components/Header'
-import Button from '../../components/Button'
 import PatientFormNew from '../../components/Patient/PatientFormNew'
+import ButtonIcon from '../../components/ButtonIcon'
 
 const PatientNewStyled = styled.div`
   .patientNewContainer {
@@ -19,9 +18,7 @@ export default function PatientNew() {
   return (
     <PatientNewStyled>
       <Header>
-          <Button action={() => history.goBack()} type='button' backgroundColor='#ffffff' color='#6C6C6C'>
-            Volver
-          </Button>
+        <ButtonIcon action={() => history.goBack()}  icon={arrowLeft} alt='Arrow to back'/>
       </Header>
 
       <div className='patientNewContainer'>

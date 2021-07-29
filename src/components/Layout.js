@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
-// Components
-import Sidebar from './Sidebar'
+import Sidebar from './Sidebar/Sidebar'
 
 const LayoutStyled = styled.div`
   display: grid;

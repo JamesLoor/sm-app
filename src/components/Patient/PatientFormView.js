@@ -1,10 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-
-// Components
 import Input from '../Input'
-import PhotoPatient from '../PhotoPatient'
 import Button from '../Button'
+import PatientPhoto from './PatientPhoto'
 
 const PatientFormNewStyled = styled.div`
   display: grid;
@@ -58,7 +56,7 @@ export default function PatientFormNew({ patient }) {
   return (
     <PatientFormNewStyled>
       <div className='formPersonalDataContainer'>
-        <PhotoPatient/>
+        <PatientPhoto/>
         <div className='personalData'>
           <h2 className='formTitle'>Datos Personales</h2>
           <div className='personalDataInputs'>

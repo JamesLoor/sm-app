@@ -1,10 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
+import defaultAvatar from '../../assets/img/defaultAvatar.svg'
 
-// Static
-import defaultAvatar from '../assets/img/defaultAvatar.svg'
-
-const PhotoPatientStyled = styled.div`
+const PatientPhotoStyled = styled.div`
   width: 100%;
   height: 200px;
   background-color: #093B32;
@@ -13,10 +11,10 @@ const PhotoPatientStyled = styled.div`
   justify-content: center;
   align-items: center;
 `
-export default function PhotoPatient() {
+export default function PatientPhoto() {
   return (
-    <PhotoPatientStyled>
+    <PatientPhotoStyled>
       <img src={defaultAvatar} alt='Default avatar' />
-    </PhotoPatientStyled>
+    </PatientPhotoStyled>
   )
 }

@@ -1,11 +1,7 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
-
-// Components
 import Patient from './Patient'
-
-// Redux
 import { getPatientList } from '../../redux/patientDucks'
 
 const PatientListStyled = styled.div`

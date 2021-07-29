@@ -4,17 +4,13 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-
-// Redux
 import { saveNewPatient } from '../../redux/patientDucks';
-
-// Components
 import Input from '../Input'
-import PhotoPatient from '../PhotoPatient'
 import Button from '../Button'
 
 // Utils
 import { cleanObject } from '../../utils/cleanObject'
+import PatientPhoto from './PatientPhoto'
 
 const PatientFormNewStyled = styled.form`
   display: grid;
@@ -103,7 +99,7 @@ export default function PatientFormNew() {
   return (
     <PatientFormNewStyled onSubmit={formik.handleSubmit}>
       <div className='formPersonalDataContainer'>
-        <PhotoPatient/>
+        <PatientPhoto/>
         <div className='personalData'>
           <h2 className='formTitle'>Datos Personales</h2>
           <div className='personalDataInputs'>

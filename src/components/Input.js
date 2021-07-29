@@ -13,7 +13,8 @@ const InputStyled = styled.div`
     width: 100%;
     border-radius: 20px;
     padding: 7.5px 20px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+    /* box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15); */
+    border: 2px solid rgba(0, 0, 0, 0.15);
   }
   .inputError {
     border: 1px solid red;

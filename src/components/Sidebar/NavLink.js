@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import arrow from '../assets/img/arrow.svg'
+import arrow from '../../assets/img/arrow.svg'
 
 const NavLinkStyled = styled.div`
   .link {
@@ -11,7 +11,6 @@ const NavLinkStyled = styled.div`
     align-items: center;
     grid-gap: 10px;
     cursor: pointer;
-    /* margin: auto 10px; */
   }
   .link:hover {
     color: #093B32;

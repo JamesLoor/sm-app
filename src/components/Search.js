@@ -2,12 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
-
-
-// Redux
 import { filteredPatientByName } from '../redux/patientDucks'
-
-// Static
 import lens from '../assets/img/magnifyingGlass.svg'
 
 const SearchStyled = styled.div`
@@ -19,7 +14,7 @@ const SearchStyled = styled.div`
   width: 300px;
   padding: 7.5px 20px;
   border-radius: 20px;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+  background-color: rgba(0, 0, 0, 0.05);
   input {
     width: 100%;
     color: #6C6C6C;
