@@ -1,7 +1,6 @@
 import { loginService } from '../services/auth'
 
 // Constants
-
 const initialState = {
   token: null,
   isAuth: false,
@@ -15,6 +14,7 @@ const AUTH_ERROR = 'AUTH_ERROR'
 const AUTH_LOGOUT = 'AUTH_LOGOUT'
 
 
+// Reducer
 export const authReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case AUTH_LOADING:
@@ -32,7 +32,6 @@ export const authReducer = (state = initialState, { type, payload }) => {
 }
 
 // Actions
-
 export const loginUser = (userCredentials) => async (dispatch) => {
   dispatch({
     type: AUTH_LOADING

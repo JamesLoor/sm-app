@@ -19,10 +19,10 @@ const ButtonIconStyled = styled.div`
     color: #757575;
   }
 `
-export default function ButtonIcon({ action, icon, alt, ...rest}) {
+export default function ButtonIcon({ icon, alt, action, backgroundColor, backgroundColorHover }) {
   return (
     <ButtonIconStyled onClick={action}>
-      <img className='icon' src={icon} alt={alt} {...rest}/>
+      <img className='icon' src={icon} alt={alt} backgroundColor={backgroundColor} backgroundColorHover={backgroundColorHover} />
     </ButtonIconStyled>
   )
 }

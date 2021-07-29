@@ -6,6 +6,7 @@ import Button from '../Button'
 import { Modal } from '../Modal'
 import { deletePatientById } from '../../redux/patientDucks'
 import { useModal } from '../../hooks/useModal'
+import ButtonIcon from '../ButtonIcon'
 
 const PatientStyled = styled.div`
   padding: 8px 20px;
@@ -48,7 +49,7 @@ export default function Patient({_id, dni, name, lastname, address, phone}){
           <li>{address}</li>
           <li>{phone}</li>
           <li>
-            <Button action={handleDelete} type='button' backgroundColor='#891919' color='#ffffff'>
+            <Button action={handleDelete} type='button' backgroundColor='#891919' backgroundColorHover='#891919' color='#ffffff'>
               X
             </Button>
           </li>
