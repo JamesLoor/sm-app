@@ -14,12 +14,12 @@ const ButtonStyled = styled.button`
   justify-content: center;
   align-items: center;
   &:hover {
-    background-color: ${props => props.backgroundColorHover ? props.backgroundColorHover : 'rgba(0,0,0,0.05)'};;
+    background-color: ${props => props.backgroundHover ? props.backgroundHover : 'rgba(0,0,0,0.05)'};
   }
 `
-export default function Button({ children, backgroundColor, backgroundColorHover, color, width, type, action }) {
+export default function Button({ children, backgroundColor, backgroundHover, color, width, type, action }) {
   return (
-    <ButtonStyled onClick={action} type={type} backgroundColor={backgroundColor} backgroundColorHover={backgroundColorHover} color={color} width={width}>
+    <ButtonStyled onClick={action} type={type} backgroundColor={backgroundColor} backgroundHover={backgroundHover} color={color} width={width}>
       {children}
     </ButtonStyled>
   )

@@ -11,18 +11,17 @@ const ButtonIconStyled = styled.div`
   justify-content: center;
   align-items: center;
   &:hover {
-    background-color: rgba(0,0,0,0.05);
-    ${props => props.backgroundColorHover ? props.backgroundColorHover : props.backgroundColor}
+    background-color: ${props => props.backgroundColorHover ? props.backgroundColorHover : props.backgroundColor};
   }
   .icon {
     width: auto;
     color: #757575;
   }
 `
-export default function ButtonIcon({ icon, alt, action, backgroundColor, backgroundColorHover }) {
+export default function ButtonIcon({ icon, alt, action, backgroundColor, backgroundHover }) {
   return (
-    <ButtonIconStyled onClick={action}>
-      <img className='icon' src={icon} alt={alt} backgroundColor={backgroundColor} backgroundColorHover={backgroundColorHover} />
+    <ButtonIconStyled onClick={action} backgroundColor={backgroundColor} backgroundHover={backgroundHover}>
+      <img className='icon' src={icon} alt={alt}/>
     </ButtonIconStyled>
   )
 }
