@@ -1,19 +1,22 @@
-import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import HeaderProfile from './HeaderProfile'
 
 const HeaderStyled = styled.header`
-  position: fixed;
+  position: relative;
   width: 100%;
   background-color: #ffffff;
-  z-index: 1000;
-  padding: 15px 0;
+  padding: 10px 0;
+  min-height: 64px;
   box-shadow: 0px 0px 7px #1111117a;
+  display: grid;
   .wrapperHeader {
     padding: 0px 20px;
     margin: 0 auto;
     display: inherit;
     justify-content: inherit;
     align-items: inherit;
+    width: inherit;
   }
   .containerHeader {
     display: grid;
@@ -29,20 +32,36 @@ const HeaderStyled = styled.header`
       font-size: 18px;
     }
   }
-`
-export default function Header() {
-  function handleButton(e) {
-    console.log('Hello')
+  .logoutTesting {
+    cursor: pointer;
   }
-
+  .dropdownHeader {
+    display: none;
+    position: fixed;
+    right: 50px;
+    top: 50px;
+  }
+  .contentHeader {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 10px;
+  }
+`
+const Header = ({ children }) => {
   return (
     <HeaderStyled>
       <div className="wrapperHeader">
         <div className="containerHeader">
-          <div className="logo">Sistema Médico</div>
-          <button onClick={handleButton}>Iniciar Sesion</button>
+          <div className="contentHeader">{children}</div>
+          <HeaderProfile />
         </div>
       </div>
     </HeaderStyled>
   )
 }
+
+Header.propTypes = {
+  children: PropTypes.node.isRequired
+}
+
+export default Header
