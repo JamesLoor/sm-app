@@ -4,9 +4,9 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import Input from '../components/Input'
-import Button from '../components/Button'
-import { loginUser } from '../redux/authDucks'
+import Input from '../../components/Input'
+import Button from '../../components/Button'
+import { loginUser } from '../../redux/authDucks'
 
 const LoginStyled = styled.div`
   display: grid;
@@ -43,12 +43,11 @@ const LoginStyled = styled.div`
 `
 
 export default function Login() {
-
   const dispatch = useDispatch()
   const history = useHistory()
-  const isAuth = useSelector(store => store.auth.token)
-  const isAuthFailed = useSelector(store => store.auth.isAuthFailed)
-  const isLoading = useSelector(store => store.auth.isLoading)
+  const isAuth = useSelector((store) => store.auth.token)
+  const isAuthFailed = useSelector((store) => store.auth.isAuthFailed)
+  const isLoading = useSelector((store) => store.auth.isLoading)
 
   const formik = useFormik({
     initialValues: {
@@ -65,35 +64,35 @@ export default function Login() {
   })
 
   useEffect(() => {
-    if(isAuth) history.push('/')
+    if (isAuth) history.push('/')
   }, [isAuth, history])
 
   return (
     <LoginStyled>
-      <div className='loginContainer'>
-        <p className='loginTitle'>Iniciar Sesión</p>
+      <div className="loginContainer">
+        <p className="loginTitle">Iniciar Sesión</p>
         <form onSubmit={formik.handleSubmit}>
           <Input
-            label='Correo electrónico'
-            name='email'
+            label="Correo electrónico"
+            name="email"
             onChange={formik.handleChange}
             value={formik.values.email}
             error={formik.errors.email}
           />
           <Input
-            label='Contraseña'
-            name='password'
-            type='password'
+            label="Contraseña"
+            name="password"
+            type="password"
             onChange={formik.handleChange}
             value={formik.values.password}
             error={formik.errors.password}
           />
-          {
-            isAuthFailed
-              ? <p className='loginFailed'>Correo electronico y contraseña no registrados</p>
-              : null
-          }
-          <Button type='submit' backgroundColor='#093B32' color='#ffffff'>
+          {isAuthFailed ? (
+            <p className="loginFailed">
+              Correo electronico y contraseña no registrados
+            </p>
+          ) : null}
+          <Button type="submit" backgroundColor="#093B32" color="#ffffff">
             {isLoading ? 'Cargando...' : 'Iniciar Sesión'}
           </Button>
         </form>
