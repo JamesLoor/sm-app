@@ -1,4 +1,4 @@
-import { genService } from '../utils/genService'
+import genService from '../utils/genService'
 
 const baseUrl = process.env.REACT_APP_API_URL
 
