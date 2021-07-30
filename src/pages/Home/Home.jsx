@@ -1,21 +1,20 @@
-import React from 'react'
 import styled from 'styled-components'
-
-// Components
-import Header from '../components/Header'
+import Header from '../../components/Header'
 
 const HomeStyled = styled.div`
   .homeContainer {
     padding: 20px;
   }
 `
-export default function Home() {
+const Home = () => {
   return (
     <HomeStyled>
-      <Header/>
-      <div className='homeContainer'>
+      <Header />
+      <div className="homeContainer">
         <h1>Home</h1>
       </div>
     </HomeStyled>
   )
 }
+
+export default Home
