@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Sidebar from './Sidebar/Sidebar'
 
@@ -20,6 +21,10 @@ const Layout = ({ children }) => {
       <div className="contentAuth">{children}</div>
     </LayoutStyled>
   )
+}
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired
 }
 
 export default Layout

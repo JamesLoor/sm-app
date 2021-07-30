@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import Button from '../Button'
 import Modal from '../Modal'
 import { deletePatientById } from '../../redux/patientDucks'
-import { useModal } from '../../hooks/useModal'
+import useModal from '../../hooks/useModal'
 
 const PatientStyled = styled.div`
   padding: 8px 20px;
