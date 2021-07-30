@@ -1,4 +1,14 @@
 # Getting Started with Project SM-APP
+## ⚒️ Set Up
 
-Yo! What up?
+```bash
+  npm install && npm start
+```
 
+Works on:  localhost:3000
+
+⚗️ Run test
+
+```bash
+  npm run test
+```
