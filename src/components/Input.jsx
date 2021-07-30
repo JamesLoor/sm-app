@@ -57,3 +57,5 @@ Input.propTypes = {
   onChange: PropTypes.string.isRequired,
   error: PropTypes.string.isRequired
 }
+
+export default Input

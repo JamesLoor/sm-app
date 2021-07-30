@@ -8,7 +8,7 @@ const PatientDocumentsStyled = styled.div`
   grid-template-columns: 240px 1fr;
   gap: 40px;
 `
-export default function PatientDocuments() {
+const PatientDocuments = () => {
   return (
     <PatientDocumentsStyled>
       <PatientBasicInformation />
@@ -19,3 +19,5 @@ export default function PatientDocuments() {
     </PatientDocumentsStyled>
   )
 }
+
+export default PatientDocuments

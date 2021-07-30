@@ -42,7 +42,7 @@ const LoginStyled = styled.div`
   }
 `
 
-export default function Login() {
+const Login = () => {
   const dispatch = useDispatch()
   const history = useHistory()
   const isAuth = useSelector((store) => store.auth.token)
@@ -100,3 +100,5 @@ export default function Login() {
     </LoginStyled>
   )
 }
+
+export default Login

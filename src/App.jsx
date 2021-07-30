@@ -2,7 +2,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './App.css'
 import Layout from './components/Layout'
-import { PrivateRoute } from './components/PrivateRoute'
+import PrivateRoute from './components/PrivateRoute'
 import generateStore from './redux/store'
 import {
   Home,
@@ -23,7 +23,7 @@ const App = () => {
           <Switch>
             <Route exact path="/login" component={Login} />
             <Layout>
-              <PrivateRoute exact path="/" component={Home} />
+              <PrivateRoute exactad path="/" component={Home} />
               <PrivateRoute exact path="/patient" component={Patient} />
               <PrivateRoute exact path="/new/patient" component={PatientNew} />
               <PrivateRoute

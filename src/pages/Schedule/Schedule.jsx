@@ -6,7 +6,7 @@ const ScheduleStyled = styled.div`
     padding: 20px;
   }
 `
-export default function Schedule() {
+const Schedule = () => {
   return (
     <ScheduleStyled>
       <Header>.</Header>
@@ -16,3 +16,5 @@ export default function Schedule() {
     </ScheduleStyled>
   )
 }
+
+export default Schedule

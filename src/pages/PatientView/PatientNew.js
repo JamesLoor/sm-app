@@ -11,19 +11,24 @@ const PatientNewStyled = styled.div`
     padding: 20px;
   }
 `
-export default function PatientNew() {
-
+const PatientNew = () => {
   const history = useHistory()
 
   return (
     <PatientNewStyled>
       <Header>
-        <ButtonIcon action={() => history.goBack()}  icon={arrowLeft} alt='Arrow to back'/>
+        <ButtonIcon
+          action={() => history.goBack()}
+          icon={arrowLeft}
+          alt="Arrow to back"
+        />
       </Header>
 
-      <div className='patientNewContainer'>
-        <PatientFormNew/>
+      <div className="patientNewContainer">
+        <PatientFormNew />
       </div>
     </PatientNewStyled>
   )
 }
+
+export default PatientNew

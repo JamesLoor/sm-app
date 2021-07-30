@@ -5,11 +5,11 @@ import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
 
 /*
-    |￣￣￣￣￣  
+    |￣￣￣￣￣
     | // TODO: Improve this
-    |＿＿＿_ 
-(\__/)|| 
-(•ㅅ•)|| 
+    |＿＿＿_
+(\__/)||
+(•ㅅ•)||
 /  づ
 */
 

@@ -187,7 +187,6 @@ export const deletePatientById = (token, id) => async (dispatch) => {
       })
     }
   } catch (e) {
-    console.log(e)
     dispatch({
       type: DELETE_PATIENT_ERROR
     })
@@ -201,6 +200,6 @@ export const filteredPatientByName = (nameToSearch) => (dispatch) => {
       payload: nameToSearch
     })
   } catch (error) {
-    console.log(error)
+    // console.log(error)
   }
 }

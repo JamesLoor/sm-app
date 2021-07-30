@@ -10,10 +10,12 @@ const PatientPhotoStyled = styled.div`
   justify-content: center;
   align-items: center;
 `
-export default function PatientPhoto() {
+const PatientPhoto = () => {
   return (
     <PatientPhotoStyled>
       <img src={defaultAvatar} alt="Default avatar" />
     </PatientPhotoStyled>
   )
 }
+
+export default PatientPhoto
