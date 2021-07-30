@@ -1,25 +1,24 @@
-import { createStore, combineReducers, /* compose ,*/ applyMiddleware } from 'redux'
-import { composeWithDevTools } from 'redux-devtools-extension';
-import thunk from 'redux-thunk'
+import { applyMiddleware, combineReducers, createStore } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
 import persistData from 'redux-localstorage'
+import thunk from 'redux-thunk'
 
-// Reducers
 import { authReducer } from './authDucks'
-import { userReducer } from './userDucks'
 import { patientReducer } from './patientDucks'
+import { userReducer } from './userDucks'
 
 const rootReducer = combineReducers({
   auth: authReducer,
   user: userReducer,
-  patient: patientReducer,
+  patient: patientReducer
 })
 
 const composeEnhancers = composeWithDevTools(
   applyMiddleware(thunk),
-  persistData('auth'),
+  persistData('auth')
 )
 
 export default function generateStore() {
-  const store = createStore( rootReducer, composeEnhancers)
+  const store = createStore(rootReducer, composeEnhancers)
   return store
 }
