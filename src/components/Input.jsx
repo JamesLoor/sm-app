@@ -1,4 +1,4 @@
-import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const InputStyled = styled.div`
@@ -7,13 +7,12 @@ const InputStyled = styled.div`
     width: 100%;
     padding: 0 0 0 20px;
     margin-bottom: 3px;
-    color: #6C6C6C;
+    color: #6c6c6c;
   }
   .inputContainer {
     width: 100%;
     border-radius: 20px;
     padding: 7.5px 20px;
-    /* box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15); */
     border: 2px solid rgba(0, 0, 0, 0.15);
   }
   .inputError {
@@ -29,10 +28,10 @@ const InputStyled = styled.div`
     padding: 0 0 0 20px;
   }
 `
-export default function Input({ label, name, value, type, disabled, onChange, error}) {
+const Input = ({ label, name, value, type, disabled, onChange, error }) => {
   return (
     <InputStyled>
-      <label className={error ? 'labelError' : ''}>
+      <label className={error && 'labelError'} htmlFor={label}>
         {label}
       </label>
       <input
@@ -40,10 +39,21 @@ export default function Input({ label, name, value, type, disabled, onChange, er
         name={name}
         type={type}
         disabled={disabled}
-        onChange={onChange ? onChange : () => {}}
+        onChange={onChange}
         value={value}
+        id={label}
       />
-      <p className='errorMessage'>{error ? error : ''}</p>
+      <p className="errorMessage">{error && error}</p>
     </InputStyled>
   )
+}
+
+Input.propTypes = {
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  disabled: PropTypes.string.isRequired,
+  onChange: PropTypes.string.isRequired,
+  error: PropTypes.string.isRequired
 }

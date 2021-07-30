@@ -1,9 +1,10 @@
-import React, { useRef } from 'react'
+import { useRef } from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom'
 
 const ModalStyled = styled.div`
-  background-color: rgba(0, 0, 0, 0.30);
+  background-color: rgba(0, 0, 0, 0.3);
   position: fixed;
   top: 0;
   bottom: 0;
@@ -47,28 +48,40 @@ const ModalWindow = styled.div`
   }
 `
 
+/*
+    |￣￣￣￣￣  
+    | // TODO: Improve this
+    |＿＿＿_ 
+(\__/)|| 
+(•ㅅ•)|| 
+/  づ
+*/
+
 const ModalContainer = document.getElementById('modalContainer')
 
-export function Modal({ children, isModalOpen, setModalOpen }){
-
+const Modal = ({ children, isModalOpen, setModalOpen }) => {
   const modalbackground = useRef(null)
   const handleModal = (e) => {
-    if(modalbackground.current === e.target) {
+    if (modalbackground.current === e.target) {
       setModalOpen(false)
     }
   }
 
-  if(isModalOpen) {
-    return (
-      ReactDOM.createPortal(
-        <ModalStyled ref={modalbackground} onClick={handleModal}>
-          <ModalWindow>
-            {children}
-          </ModalWindow>
-        </ModalStyled>,
-        ModalContainer)
+  if (isModalOpen) {
+    return ReactDOM.createPortal(
+      <ModalStyled ref={modalbackground} onClick={handleModal}>
+        <ModalWindow>{children}</ModalWindow>
+      </ModalStyled>,
+      ModalContainer
     )
-  } else {
-    return null
   }
+  return null
 }
+
+Modal.propTypes = {
+  children: PropTypes.node.isRequired,
+  isModalOpen: PropTypes.boolisRequired,
+  setModalOpen: PropTypes.func.isRequired
+}
+
+export default Modal

@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 import Document from './Document'
 
@@ -10,12 +9,12 @@ const DocumentsListStyled = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   gap: 12px;
-  .titleListContainer{
+  .titleListContainer {
     padding: 8px 20px;
-    background-color: #093B32;
+    background-color: #093b32;
     border-radius: 20px;
   }
-  .titleList{
+  .titleList {
     display: grid;
     grid-template-columns: 1fr 1fr 2fr 120px;
     gap: 10px;
@@ -26,7 +25,7 @@ const DocumentsListStyled = styled.div`
   }
 `
 
-export default function DocumentsList(){
+const DocumentsList = () => {
   return (
     <DocumentsListStyled>
       <div className="titleListContainer">
@@ -36,7 +35,9 @@ export default function DocumentsList(){
           <li>Nombre</li>
         </ul>
       </div>
-      <Document date='18/10/2021' type='Receta' name='Remedios'/>
+      <Document date="18/10/2021" type="Receta" name="Remedios" />
     </DocumentsListStyled>
   )
 }
+
+export default DocumentsList

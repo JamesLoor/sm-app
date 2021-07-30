@@ -1,4 +1,4 @@
-import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import HeaderProfile from './HeaderProfile'
 
@@ -44,21 +44,24 @@ const HeaderStyled = styled.header`
   .contentHeader {
     display: grid;
     grid-auto-flow: column;
-    gap: 10px
+    gap: 10px;
   }
 `
-export default function Header({ children }) {
-
+const Header = ({ children }) => {
   return (
     <HeaderStyled>
-      <div className='wrapperHeader'>
-        <div className='containerHeader'>
-          <div className='contentHeader'>
-            {children}
-          </div>
-          <HeaderProfile/>
+      <div className="wrapperHeader">
+        <div className="containerHeader">
+          <div className="contentHeader">{children}</div>
+          <HeaderProfile />
         </div>
       </div>
     </HeaderStyled>
   )
 }
+
+Header.propTypes = {
+  children: PropTypes.node.isRequired
+}
+
+export default Header

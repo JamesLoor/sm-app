@@ -1,9 +1,8 @@
-import React from 'react'
 import { useState } from 'react'
-import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
-import { filteredPatientByName } from '../redux/patientDucks'
+import styled from 'styled-components'
 import lens from '../assets/img/magnifyingGlass.svg'
+import { filteredPatientByName } from '../redux/patientDucks'
 
 const SearchStyled = styled.div`
   display: grid;
@@ -17,11 +16,10 @@ const SearchStyled = styled.div`
   background-color: rgba(0, 0, 0, 0.05);
   input {
     width: 100%;
-    color: #6C6C6C;
+    color: #6c6c6c;
   }
 `
-export default function Search() {
-
+const Search = () => {
   const dispatch = useDispatch()
   const [inputValue, setInputValue] = useState('')
 
@@ -32,8 +30,15 @@ export default function Search() {
 
   return (
     <SearchStyled>
-      <input type='text' placeholder='Buscar por nombre' value={inputValue} onChange={handleSearch}/>
-      <img src={lens} alt='magnifying glass' />
+      <input
+        type="text"
+        placeholder="Buscar por nombre"
+        value={inputValue}
+        onChange={handleSearch}
+      />
+      <img src={lens} alt="magnifying glass" />
     </SearchStyled>
   )
 }
+
+export default Search

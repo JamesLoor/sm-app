@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 import Sidebar from './Sidebar/Sidebar'
 
@@ -14,13 +13,13 @@ const LayoutStyled = styled.div`
     right: 0;
   }
 `
-export default function Layout({ children }) {
+const Layout = ({ children }) => {
   return (
     <LayoutStyled>
-      <Sidebar/>
-      <div className='contentAuth'>
-        {children}
-      </div>
+      <Sidebar />
+      <div className="contentAuth">{children}</div>
     </LayoutStyled>
   )
 }
+
+export default Layout

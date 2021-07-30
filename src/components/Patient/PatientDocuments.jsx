@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 import PatientBasicInformation from './PatientBasicInformation'
 import PatientHeader from './PatientHeader'
@@ -12,10 +11,10 @@ const PatientDocumentsStyled = styled.div`
 export default function PatientDocuments() {
   return (
     <PatientDocumentsStyled>
-      <PatientBasicInformation/>
-      <div className='patientDocumentsContainer'>
-        <PatientHeader title="Documentos Adjuntos"/>
-        <DocumentsList/>
+      <PatientBasicInformation />
+      <div className="patientDocumentsContainer">
+        <PatientHeader title="Documentos Adjuntos" />
+        <DocumentsList />
       </div>
     </PatientDocumentsStyled>
   )

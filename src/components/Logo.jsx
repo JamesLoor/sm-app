@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 
 const LogoStyled = styled.figure`
@@ -10,7 +9,7 @@ const LogoStyled = styled.figure`
   width: 100%;
   user-select: none;
   .circleLogo {
-    background-color: #093B32;
+    background-color: #093b32;
     padding: 10px;
     border-radius: 999px;
     text-align: center;
@@ -26,13 +25,15 @@ const LogoStyled = styled.figure`
   }
 `
 
-export default function Logo() {
+const Logo = () => {
   return (
     <LogoStyled>
-      <div className='circleLogo'>
+      <div className="circleLogo">
         <p>SM</p>
       </div>
-      <p className='textLogo'>Medit</p>
+      <p className="textLogo">Medit</p>
     </LogoStyled>
   )
 }
+
+export default Logo

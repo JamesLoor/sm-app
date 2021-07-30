@@ -1,9 +1,9 @@
-import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import Button from '../Button'
-import { Modal } from '../Modal'
+import Modal from '../Modal'
 import { deletePatientById } from '../../redux/patientDucks'
 import { useModal } from '../../hooks/useModal'
 
@@ -19,17 +19,16 @@ const PatientStyled = styled.div`
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: #6C6C6C;
+    color: #6c6c6c;
   }
 `
-export default function Patient({_id, dni, name, lastname, address, phone}){
-
+const Patient = ({ _id, dni, name, lastname, address, phone }) => {
   const history = useHistory()
   const dispatch = useDispatch()
-  const token = useSelector(store => store.auth.token)
+  const token = useSelector((store) => store.auth.token)
   const [isModalOpen, setModalOpen] = useModal()
 
-  const handleClickPatient = (e) => {
+  const handleClickPatient = () => {
     history.push(`/patient/${_id}`)
   }
 
@@ -41,14 +40,20 @@ export default function Patient({_id, dni, name, lastname, address, phone}){
   return (
     <>
       <PatientStyled id={_id} onClick={handleClickPatient}>
-        <ul className='patient'>
+        <ul className="patient">
           <li>{dni}</li>
           <li>{name}</li>
           <li>{lastname}</li>
           <li>{address}</li>
           <li>{phone}</li>
           <li>
-            <Button action={handleDelete} type='button' backgroundColor='#891919' backgroundColorHover='#891919' color='#ffffff'>
+            <Button
+              action={handleDelete}
+              type="button"
+              backgroundColor="#891919"
+              backgroundColorHover="#891919"
+              color="#ffffff"
+            >
               X
             </Button>
           </li>
@@ -56,19 +61,29 @@ export default function Patient({_id, dni, name, lastname, address, phone}){
       </PatientStyled>
       <Modal isModalOpen={isModalOpen} setModalOpen={setModalOpen}>
         <div className="modalContainer">
-          <div className='modalTitle'>
-            <p>Estas seguro de eliminar el paciente {name} {lastname}?</p>
+          <div className="modalTitle">
+            <p>
+              Estas seguro de eliminar el paciente {name} {lastname}?
+            </p>
           </div>
 
           <div className="modalBody">
-            <p>Recuerda que se eliminaran tambien sus documentos y puede ser perjudicial</p>
+            <p>
+              Recuerda que se eliminaran tambien sus documentos y puede ser
+              perjudicial
+            </p>
           </div>
 
-          <div className='modalButtons'>
-            <Button action={() => dispatch(deletePatientById(token, _id))} type='button' backgroundColor='#891919' color='#ffffff'>
+          <div className="modalButtons">
+            <Button
+              action={() => dispatch(deletePatientById(token, _id))}
+              type="button"
+              backgroundColor="#891919"
+              color="#ffffff"
+            >
               Eliminar
             </Button>
-            <Button action={() => setModalOpen(false)} type='button'>
+            <Button action={() => setModalOpen(false)} type="button">
               Cancelar
             </Button>
           </div>
@@ -77,3 +92,14 @@ export default function Patient({_id, dni, name, lastname, address, phone}){
     </>
   )
 }
+
+Patient.propTypes = {
+  _id: PropTypes.string.isRequired,
+  dni: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  lastname: PropTypes.string.isRequired,
+  address: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired
+}
+
+export default Patient

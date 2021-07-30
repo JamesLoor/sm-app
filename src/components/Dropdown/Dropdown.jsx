@@ -1,4 +1,4 @@
-import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const DropdownStyled = styled.div`
@@ -29,20 +29,28 @@ const DropdownStyled = styled.div`
       text-decoration: none;
     }
     li *:hover {
-      color: #093B32;
+      color: #093b32;
     }
   }
 `
 
-export const Dropdown = ({ children, title, isDropdownOpen }) => {
+const Dropdown = ({ children, title, isDropdownOpen }) => {
   return (
     <>
-      {isDropdownOpen &&
+      {isDropdownOpen && (
         <DropdownStyled>
-          <p className='titleOptions'>{title}</p>
+          <p className="titleOptions">{title}</p>
           <ul>{children}</ul>
         </DropdownStyled>
-      }
+      )}
     </>
   )
 }
+
+Dropdown.propTypes = {
+  children: PropTypes.node.isRequired,
+  title: PropTypes.string.isRequired,
+  isDropdownOpen: PropTypes.bool.isRequired
+}
+
+export default Dropdown
