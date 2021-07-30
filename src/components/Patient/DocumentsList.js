@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Document from './Document'
 
 const DocumentsListStyled = styled.div`
   width: 100%;
@@ -35,6 +36,7 @@ export default function DocumentsList(){
           <li>Nombre</li>
         </ul>
       </div>
+      <Document date='18/10/2021' type='Receta' name='Remedios'/>
     </DocumentsListStyled>
   )
 }
