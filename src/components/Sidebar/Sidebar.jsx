@@ -27,8 +27,6 @@ const SidebarStyled = styled.div`
     align-items: center;
   }
   .sideBarFooter {
-    text-align: center;
-    font-size: 12px;
     padding: 0 30px;
   }
 `

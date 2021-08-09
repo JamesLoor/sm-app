@@ -1,28 +1,33 @@
+/* eslint-disable react/require-default-props */
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useFormik } from 'formik'
+import { useHistory } from 'react-router'
 import * as Yup from 'yup'
-import { useHistory } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
 import Input from '../../components/Input'
 import Button from '../../components/Button'
-import { loginUser } from '../../redux/authDucks'
+import useAuth from '../../hooks/useAuth'
 
 const LoginStyled = styled.div`
   display: grid;
-  grid-template-columns: minmax(auto, 400px);
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   padding: 20px;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: #f8f8fb;
+  .loginPageContainer {
+    display: grid;
+    grid-template-columns: minmax(auto, 370px);
+    justify-content: center;
+    align-items: flex-start;
+  }
   .loginContainer {
     width: 100%;
     padding: 20px;
     background-color: #ffffff;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
-    border-radius: 10px;
+    box-shadow: 0px 12px 26px rgba(16, 30, 115, 0.1);
+    border-radius: 8px;
   }
   form {
     display: grid;
@@ -31,23 +36,59 @@ const LoginStyled = styled.div`
   }
   .loginTitle {
     text-align: center;
-    margin: 15px 0;
-    font-size: 24px;
+    margin-bottom: 15px;
+    font-size: 30px;
     font-weight: 700;
   }
   .loginFailed {
-    padding: 0 20px;
+    padding-bottom: 10px;
     color: red;
     font-size: 14px;
+  }
+
+  .loginWelcome {
+    display: none;
+    gap: 12px;
+  }
+
+  .loginWelcome h1 {
+    font-size: 30px;
+  }
+
+  .loginWelcome p {
+    font-size: 16px;
+    color: #52575c;
+  }
+
+  @media screen and (min-width: 768px) {
+    .loginTitle {
+      font-size: 36px;
+    }
+    .loginWelcome {
+      display: grid;
+    }
+    .loginWelcome h1 {
+      font-size: 36px;
+    }
+    .loginWelcome p {
+      font-size: 20px;
+    }
+    .loginPageContainer {
+      grid-template-columns: 1fr minmax(auto, 370px);
+      gap: 20px;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .loginWelcome h1 {
+      font-size: 50px;
+    }
   }
 `
 
 const Login = () => {
-  const dispatch = useDispatch()
   const history = useHistory()
-  const isAuth = useSelector((store) => store.auth.token)
-  const isAuthFailed = useSelector((store) => store.auth.isAuthFailed)
-  const isLoading = useSelector((store) => store.auth.isLoading)
+  const { isAuth, isAuthFailed, isAuthLoading, loginUser } = useAuth()
 
   const formik = useFormik({
     initialValues: {
@@ -58,8 +99,8 @@ const Login = () => {
       email: Yup.string().email('Invalido').required('Obligatorio'),
       password: Yup.string().required('Obligatorio')
     }),
-    onSubmit: async (user) => {
-      dispatch(loginUser(user))
+    onSubmit: (user) => {
+      loginUser(user)
     }
   })
 
@@ -69,33 +110,52 @@ const Login = () => {
 
   return (
     <LoginStyled>
-      <div className="loginContainer">
-        <p className="loginTitle">Iniciar Sesión</p>
-        <form onSubmit={formik.handleSubmit}>
-          <Input
-            label="Correo electrónico"
-            name="email"
-            onChange={formik.handleChange}
-            value={formik.values.email}
-            error={formik.errors.email}
-          />
-          <Input
-            label="Contraseña"
-            name="password"
-            type="password"
-            onChange={formik.handleChange}
-            value={formik.values.password}
-            error={formik.errors.password}
-          />
-          {isAuthFailed ? (
-            <p className="loginFailed">
-              Correo electronico y contraseña no registrados
+      <div className="wrapper">
+        <div className="loginPageContainer">
+          <div className="loginWelcome">
+            <h1>Bienvenidos a SMedit</h1>
+            <p>
+              Software que permite a sus doctores administrar pacientes y
+              agendas agendas cual sea su especialidad, proporcionando comodas.
             </p>
-          ) : null}
-          <Button type="submit" backgroundColor="#093B32" color="#ffffff">
-            {isLoading ? 'Cargando...' : 'Iniciar Sesión'}
-          </Button>
-        </form>
+          </div>
+
+          <div className="loginContainer">
+            <p className="loginTitle">Inicia sesión</p>
+            {isAuthFailed && (
+              <p className="loginFailed">Correo y contraseña incorrectos</p>
+            )}
+            <form onSubmit={formik.handleSubmit}>
+              <Input
+                label="Correo electrónico"
+                name="email"
+                placeholder="example@example.com"
+                onChange={formik.handleChange}
+                value={formik.values.email}
+                error={formik.errors.email}
+                touched={formik.touched.email}
+              />
+              <Input
+                label="Contraseña"
+                name="password"
+                type="password"
+                placeholder="······"
+                onChange={formik.handleChange}
+                value={formik.values.password}
+                error={formik.errors.password}
+                touched={formik.touched.password}
+              />
+              <Button
+                type="submit"
+                backgroundColor="#093B32"
+                color="#ffffff"
+                backgroundHover="#093B32"
+              >
+                {isAuthLoading ? 'Cargando...' : 'Iniciar sesión'}
+              </Button>
+            </form>
+          </div>
+        </div>
       </div>
     </LoginStyled>
   )

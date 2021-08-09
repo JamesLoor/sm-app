@@ -1,5 +1,4 @@
-import { loginService } from '../services/auth'
-
+// Constants
 const initialState = {
   token: null,
   isAuth: false,
@@ -29,26 +28,28 @@ export const authReducer = (state = initialState, { type, payload }) => {
   }
 }
 
-export const loginUser = (userCredentials) => async (dispatch) => {
-  dispatch({
-    type: AUTH_LOADING
-  })
-  try {
-    const result = await loginService(userCredentials)
-    const { token } = result.data.message
-    dispatch({
-      type: AUTH_SUCCES,
-      payload: token
-    })
-  } catch (error) {
-    dispatch({
-      type: AUTH_ERROR
-    })
+// Actions
+export const actionAuthSucces = (token) => {
+  return {
+    type: AUTH_SUCCES,
+    payload: token
   }
 }
 
-export const logoutUser = () => (dispatch) => {
-  dispatch({
+export const actionAuthLoading = () => {
+  return {
+    type: AUTH_LOADING
+  }
+}
+
+export const actionAuthError = () => {
+  return {
+    type: AUTH_ERROR
+  }
+}
+
+export const actionAuthLogout = () => {
+  return {
     type: AUTH_LOGOUT
-  })
+  }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
@@ -6,7 +7,6 @@ const ButtonStyled = styled.button`
   background: ${(props) =>
     props.backgroundColor ? props.backgroundColor : '#ffffff'};
   color: ${(props) => (props.color ? props.color : '#000000')};
-  font-weight: 500;
   border-radius: 20px;
   padding: 7.5px 20px;
   text-align: center;
@@ -53,12 +53,12 @@ const Button = ({
 
 Button.propTypes = {
   children: PropTypes.string.isRequired,
-  backgroundColor: PropTypes.string.isRequired,
-  backgroundHover: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
-  width: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  action: PropTypes.string.isRequired
+  backgroundColor: PropTypes.string,
+  backgroundHover: PropTypes.string,
+  color: PropTypes.string,
+  width: PropTypes.string,
+  action: PropTypes.string
 }
 
 export default Button

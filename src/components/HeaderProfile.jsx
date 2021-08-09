@@ -6,11 +6,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import avatar from '../assets/img/avatar.svg'
 import useDropdown from '../hooks/useDropdown'
-import { logoutUser } from '../redux/authDucks'
 import { getFullNameUser } from '../redux/userDucks'
 import capitalize from '../utils/capitalize'
 import Dropdown from './Dropdown/Dropdown'
 import DropdownOption from './Dropdown/DropdownOption'
+import useAuth from '../hooks/useAuth'
 
 const HeaderProfileStyled = styled.div`
   position: relative;
@@ -24,13 +24,11 @@ const HeaderProfileStyled = styled.div`
   }
 `
 const HeaderProfile = () => {
+  const { logoutUser } = useAuth()
   const { isDropdownOpen, toggleDropdown, closeDropdown } = useDropdown(false)
   const dispatch = useDispatch()
   const token = useSelector((store) => store.auth.token)
   const fullName = useSelector((store) => store.user.fullName) || ''
-  const handleLogout = () => {
-    dispatch(logoutUser())
-  }
 
   const handleDropdown = () => {
     toggleDropdown()
@@ -57,7 +55,9 @@ const HeaderProfile = () => {
           <img src={avatar} alt="Avatar to user" />
         </div>
         <Dropdown isDropdownOpen={isDropdownOpen} title="Opciones">
-          <DropdownOption action={handleLogout}>Cerrar sesión</DropdownOption>
+          <DropdownOption action={() => logoutUser()}>
+            Cerrar sesión
+          </DropdownOption>
         </Dropdown>
       </OutsideClickHandler>
     </HeaderProfileStyled>

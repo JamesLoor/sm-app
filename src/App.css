@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins';
+  font-family: 'Rubik';
   font-size: 16px;
 }
 
@@ -39,4 +39,16 @@ li {
 a {
   color: #000000;
   text-decoration: none;
+}
+
+.wrapper {
+  max-width: 1440px;
+  width: 92%;
+  margin: 0 auto;
+  display: inherit;
+  grid-template-columns: inherit;
+  grid-template-rows: inherit;
+  justify-content: inherit;
+  align-items: inherit;
+  gap: inherit;
 }
