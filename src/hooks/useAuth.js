@@ -1,26 +1,22 @@
 import { useSelector, useDispatch } from 'react-redux'
+import { actionAuthLogin, actionAuthLogout } from '../redux/authDucks'
 import { loginService } from '../services/auth'
-import {
-  actionAuthLoading,
-  actionAuthError,
-  actionAuthSucces,
-  actionAuthLogout
-} from '../redux/authDucks'
 
 const useAuth = () => {
   const dispatch = useDispatch()
   const isAuth = useSelector((store) => store.auth.token)
   const isAuthFailed = useSelector((store) => store.auth.isAuthFailed)
   const isAuthLoading = useSelector((store) => store.auth.isLoading)
+  const tokenJWT = useSelector((store) => store.auth.token)
 
   const loginUser = async (user) => {
-    dispatch(actionAuthLoading())
+    dispatch(actionAuthLogin.loading())
     try {
       const result = await loginService(user)
       const { token } = result.data.message
-      dispatch(actionAuthSucces(token))
+      dispatch(actionAuthLogin.success(token))
     } catch (error) {
-      dispatch(actionAuthError())
+      dispatch(actionAuthLogin.error())
     }
   }
 
@@ -33,7 +29,8 @@ const useAuth = () => {
     isAuthFailed,
     isAuthLoading,
     loginUser,
-    logoutUser
+    logoutUser,
+    tokenJWT
   }
 }
 

@@ -2,7 +2,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { Route, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { useSelector } from 'react-redux'
+import useAuth from '../../hooks/useAuth'
 
 /*
     |￣￣￣￣￣
@@ -14,18 +14,12 @@ import { useSelector } from 'react-redux'
 */
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  const auth = useSelector((store) => store.auth.token)
+  const { tokenJWT } = useAuth()
   return (
     <Route
       {...rest}
-      render={(props) =>
-        auth ? (
-          <Component {...props} />
-        ) : (
-          <Redirect
-            to={{ pathname: '/login', state: { from: props.location } }}
-          />
-        )
+      render={props =>
+        tokenJWT ? <Component {...props} /> : <Redirect to="/login" />
       }
     />
   )

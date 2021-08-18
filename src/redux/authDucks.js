@@ -29,22 +29,22 @@ export const authReducer = (state = initialState, { type, payload }) => {
 }
 
 // Actions
-export const actionAuthSucces = (token) => {
-  return {
-    type: AUTH_SUCCES,
-    payload: token
-  }
-}
-
-export const actionAuthLoading = () => {
-  return {
-    type: AUTH_LOADING
-  }
-}
-
-export const actionAuthError = () => {
-  return {
-    type: AUTH_ERROR
+export const actionAuthLogin = {
+  success: (token) => {
+    return {
+      type: AUTH_SUCCES,
+      payload: token
+    }
+  },
+  error: () => {
+    return {
+      type: AUTH_ERROR
+    }
+  },
+  loading: () => {
+    return {
+      type: AUTH_LOADING
+    }
   }
 }
 

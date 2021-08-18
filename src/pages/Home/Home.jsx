@@ -1,16 +1,17 @@
 import styled from 'styled-components'
-import Header from '../../components/Header'
+import Header from '../../components/Common/Header'
 
 const HomeStyled = styled.div`
-  .homeContainer {
-    padding: 20px;
+  min-height: 100vh;
+  .homeContent {
+    padding: 10px;
   }
 `
 const Home = () => {
   return (
     <HomeStyled>
       <Header />
-      <div className="homeContainer">
+      <div className="homeContent">
         <h1>Home</h1>
       </div>
     </HomeStyled>

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/require-default-props */
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
@@ -14,6 +15,7 @@ const InputStyled = styled.div`
   .inputContainer {
     width: 100%;
     padding: 7.5px 20px;
+    background-color: var(--background-box-color);
     border-bottom: 2px solid rgba(0, 0, 0, 0.15);
   }
   .inputError {
@@ -29,17 +31,7 @@ const InputStyled = styled.div`
     padding: 0 0 0 20px;
   }
 `
-const Input = ({
-  label,
-  name,
-  placeholder,
-  value,
-  type,
-  disabled,
-  onChange,
-  error,
-  touched
-}) => {
+const Input = ({ label, error, touched, ...rest }) => {
   return (
     <InputStyled>
       <label className={error && touched && 'labelError'} htmlFor={label}>
@@ -47,13 +39,7 @@ const Input = ({
       </label>
       <input
         className={`inputContainer ${error && touched && 'inputError'}`}
-        name={name}
-        type={type}
-        placeholder={placeholder}
-        disabled={disabled}
-        onChange={onChange}
-        value={value}
-        id={label}
+        {...rest}
       />
     </InputStyled>
   )
@@ -67,7 +53,7 @@ Input.propTypes = {
   type: PropTypes.string,
   onChange: PropTypes.func,
   error: PropTypes.string,
-  touched: PropTypes.string,
+  touched: PropTypes.bool,
   disabled: PropTypes.string
 }
 

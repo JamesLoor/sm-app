@@ -3,7 +3,7 @@ import genService from '../utils/genService'
 
 const baseUrl = process.env.REACT_APP_API_URL
 
-export const getFullName = (token) => {
+export const getFullName = token => {
   const url = `${baseUrl}/auth/me`
   return genService(url, 'get', token)
 }

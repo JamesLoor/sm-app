@@ -1,15 +1,16 @@
+/* eslint-disable react/require-default-props */
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import HeaderProfile from './HeaderProfile'
 
 const HeaderStyled = styled.header`
+  display: grid;
   position: relative;
   width: 100%;
-  background-color: #ffffff;
+  min-height: 60px;
   padding: 10px 0;
-  min-height: 64px;
-  box-shadow: 0px 0px 7px #1111117a;
-  display: grid;
+  background-color: var(--background-box-color);
+  box-shadow: var(--box-shadow-default);
   .wrapperHeader {
     padding: 0px 20px;
     margin: 0 auto;
@@ -24,7 +25,7 @@ const HeaderStyled = styled.header`
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    grid-gap: 40px;
+    grid-gap: 20px;
 
     .logo {
       width: 100%;
@@ -44,6 +45,7 @@ const HeaderStyled = styled.header`
   .contentHeader {
     display: grid;
     grid-auto-flow: column;
+    align-items: center;
     gap: 10px;
   }
 `
@@ -61,7 +63,7 @@ const Header = ({ children }) => {
 }
 
 Header.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node
 }
 
 export default Header

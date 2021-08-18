@@ -1,12 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-case-declarations */
-import {
-  deletePatient,
-  getPatient,
-  getPatients,
-  savePatient
-} from '../services/patient'
-
+// Constants
 const initialState = {
   patientList: [],
   patientListByName: [],
@@ -16,9 +10,11 @@ const initialState = {
   numberPages: null
 }
 
-const GET_PATIENT_LIST_SUCCESS = 'GET_PATIENT_LIST_SUCCES'
+const GET_PATIENT_LIST_SUCCESS = 'GET_PATIENT_LIST_SUCCESS'
 const GET_PATIENT_LIST_ERROR = 'GET_PATIENT_LIST_ERROR'
 const GET_PATIENT_LIST_LOADING = 'GET_PATIENT_LIST_LOADING'
+
+const SET_PATIENT_LIST_BY_NAME = 'SET_PATIENT_LIST_BY_NAME'
 
 const GET_PATIENT_SUCCESS = 'GET_PATIENT_SUCCESS'
 const GET_PATIENT_ERROR = 'GET_PATIENT_ERROR'
@@ -36,8 +32,6 @@ const UPDATE_PATIENT_SUCCESS = 'UPDATE_PATIENT_SUCCES'
 const UPDATE_PATIENT_ERROR = 'UPDATE_PATIENT_ERROR'
 const UPDATE_PATIENT_LOADING = 'UPDATE_PATIENT_LOADING'
 
-const SET_PATIENT_LIST_BY_NAME = 'SET_PATIENT_LIST_BY_NAME'
-
 export const patientReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case GET_PATIENT_LIST_SUCCESS:
@@ -51,6 +45,11 @@ export const patientReducer = (state = initialState, { type, payload }) => {
       return { ...initialState }
     case GET_PATIENT_LIST_LOADING:
       return { ...state, isLoading: true }
+    case SET_PATIENT_LIST_BY_NAME:
+      const patientListByName = state.patientList.filter((patient) =>
+        patient.name.toLowerCase().includes(payload.toLowerCase())
+      )
+      return { ...state, patientListByName }
 
     case GET_PATIENT_SUCCESS:
       return { ...state, patientObtainedById: { ...payload } }
@@ -83,123 +82,90 @@ export const patientReducer = (state = initialState, { type, payload }) => {
     case UPDATE_PATIENT_LOADING:
       return { ...state, isLoading: true }
 
-    case SET_PATIENT_LIST_BY_NAME:
-      const patientListByName = state.patientList.filter((patient) =>
-        patient.name.toLowerCase().includes(payload.toLowerCase())
-      )
-      return { ...state, patientListByName }
-
     default:
       return state
   }
 }
 
-// Actions
-
-export const getPatientList = (token, amount, page) => async (dispatch) => {
-  dispatch({
-    type: GET_PATIENT_LIST_LOADING
-  })
-  try {
-    if (token) {
-      const result = await getPatients(token, amount, page)
-      const patientList = result.data.message
-      dispatch({
-        type: GET_PATIENT_LIST_SUCCESS,
-        payload: patientList
-      })
-    } else {
-      dispatch({
-        type: GET_PATIENT_LIST_ERROR
-      })
+export const actionGetPatientList = {
+  success: (patientList) => {
+    return {
+      type: GET_PATIENT_LIST_SUCCESS,
+      payload: patientList
     }
-  } catch (error) {
-    dispatch({
+  },
+  error: () => {
+    return {
       type: GET_PATIENT_LIST_ERROR
-    })
+    }
+  },
+  loading: () => {
+    return {
+      type: GET_PATIENT_LIST_LOADING
+    }
   }
 }
 
-export const getPatientById = (token, id) => async (dispatch) => {
-  dispatch({
-    type: GET_PATIENT_LOADING
-  })
-  try {
-    if (token) {
-      const result = await getPatient(token, id)
-      const { patient } = result.data.message
-      dispatch({
-        type: GET_PATIENT_SUCCESS,
-        payload: patient
-      })
-    } else {
-      dispatch({
-        type: GET_PATIENT_ERROR
-      })
+export const actionGetPatient = {
+  success: (patient) => {
+    return {
+      type: GET_PATIENT_SUCCESS,
+      payload: patient
     }
-  } catch (error) {
-    dispatch({
+  },
+  error: () => {
+    return {
       type: GET_PATIENT_ERROR
-    })
+    }
+  },
+  loading: () => {
+    return {
+      type: GET_PATIENT_LOADING
+    }
   }
 }
 
-export const saveNewPatient = (token, newPatient) => async (dispatch) => {
-  dispatch({
-    type: POST_PATIENT_LOADING
-  })
-  try {
-    if (token) {
-      const result = await savePatient(token, newPatient)
-      const { patient } = result.data.message
-      dispatch({
-        type: POST_PATIENT_SUCCESS,
-        payload: patient
-      })
-      return true
+export const actionPostPatient = {
+  success: (newPatient) => {
+    return {
+      type: POST_PATIENT_SUCCESS,
+      payload: newPatient
     }
-    dispatch({
+  },
+  error: () => {
+    return {
       type: POST_PATIENT_ERROR
-    })
-  } catch (error) {
-    dispatch({
-      type: POST_PATIENT_ERROR
-    })
-    return false
+    }
+  },
+  loading: () => {
+    return {
+      type: POST_PATIENT_LOADING
+    }
   }
-  return null
 }
 
-export const deletePatientById = (token, id) => async (dispatch) => {
-  dispatch({
-    type: DELETE_PATIENT_LOADING
-  })
-  try {
-    if (token) {
-      await deletePatient(token, id)
-      dispatch({
-        type: DELETE_PATIENT_SUCCESS,
-        payload: id
-      })
-    } else {
-      dispatch({
-        type: DELETE_PATIENT_ERROR
-      })
+export const actionDeletePatient = {
+  success: (id) => {
+    return {
+      type: DELETE_PATIENT_SUCCESS,
+      payload: id
     }
-  } catch (e) {
-    dispatch({
+  },
+  error: () => {
+    return {
       type: DELETE_PATIENT_ERROR
-    })
+    }
+  },
+  loading: () => {
+    return {
+      type: DELETE_PATIENT_LOADING
+    }
   }
 }
 
-export const filteredPatientByName = (nameToSearch) => (dispatch) => {
-  try {
-    dispatch({
-      type: SET_PATIENT_LIST_BY_NAME,
-      payload: nameToSearch
-    })
-  } catch (error) {
-    // console.log(error)
+export const actionFilteredPatientByName = (nameToSearch) => {
+  return {
+    type: SET_PATIENT_LIST_BY_NAME,
+    payload: nameToSearch
   }
 }

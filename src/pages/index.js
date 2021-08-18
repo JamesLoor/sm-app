@@ -1,8 +1,8 @@
 import Home from './Home/Home'
 import Login from './Login/Login'
-import Patient from './PatientView/Patient'
-import PatientDetail from './PatientView/PatientDetail'
-import PatientNew from './PatientView/PatientNew'
+import Patient from './Patient/Patient'
+import PatientNew from './Patient/PatientNew'
 import Schedule from './Schedule/Schedule'
+import Error404 from './Error/Error404'
 
-export { Home, Login, Patient, PatientDetail, PatientNew, Schedule }
+export { Home, Login, Patient, Schedule, PatientNew, Error404 }

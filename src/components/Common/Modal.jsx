@@ -44,16 +44,16 @@ const ModalWindow = styled.div`
     grid-template-columns: auto auto;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
   }
 `
 
 /*
-    |￣￣￣￣￣  
+    |￣￣￣￣￣
     | // TODO: Improve this
-    |＿＿＿_ 
-(\__/)|| 
-(•ㅅ•)|| 
+    |＿＿＿_
+(\__/)||
+(•ㅅ•)||
 /  づ
 */
 
@@ -80,8 +80,8 @@ const Modal = ({ children, isModalOpen, setModalOpen }) => {
 
 Modal.propTypes = {
   children: PropTypes.node.isRequired,
-  isModalOpen: PropTypes.boolisRequired,
-  setModalOpen: PropTypes.func.isRequired
+  isModalOpen: PropTypes.bool,
+  setModalOpen: PropTypes.func
 }
 
 export default Modal

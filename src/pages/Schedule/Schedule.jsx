@@ -1,16 +1,17 @@
 import styled from 'styled-components'
-import Header from '../../components/Header'
+import Header from '../../components/Common/Header'
 
 const ScheduleStyled = styled.div`
-  .scheduleContainer {
-    padding: 20px;
+  min-height: 100vh;
+  .scheduleContent {
+    padding: 10px;
   }
 `
 const Schedule = () => {
   return (
     <ScheduleStyled>
-      <Header>.</Header>
-      <div className="scheduleContainer">
+      <Header />
+      <div className="scheduleContent">
         <h1>Schedule</h1>
       </div>
     </ScheduleStyled>
